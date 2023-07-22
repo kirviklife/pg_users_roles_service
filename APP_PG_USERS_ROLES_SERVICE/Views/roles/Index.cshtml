@@ -1,0 +1,125 @@
+﻿@model IEnumerable<APP_PG_USERS_ROLES_SERVICE.Models.roles>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.role_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.role_pass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.im)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.otch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_new_password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_login)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_superuser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_createdb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_createrole)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_inherit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_replication)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.valid_until)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.servers)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.role_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.role_pass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.im)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.otch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_new_password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_superuser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_createdb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_createrole)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_inherit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_replication)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.valid_until)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.servers.id_srv)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id_role">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id_role">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id_role">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

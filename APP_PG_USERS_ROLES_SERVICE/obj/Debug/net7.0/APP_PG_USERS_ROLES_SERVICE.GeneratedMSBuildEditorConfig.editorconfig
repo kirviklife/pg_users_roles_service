@@ -1,0 +1,305 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = APP_PG_USERS_ROLES_SERVICE
+build_property.RootNamespace = APP_PG_USERS_ROLES_SERVICE
+build_property.ProjectDir = D:\VS Projects\APP_PG_USERS_ROLES_SERVICE\APP_PG_USERS_ROLES_SERVICE\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\VS Projects\APP_PG_USERS_ROLES_SERVICE\APP_PG_USERS_ROLES_SERVICE
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/databases/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/databases/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/databases/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/databases/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/databases/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grants/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grants/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grants/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grants/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grants/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grant_privs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRfcHJpdnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grant_privs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRfcHJpdnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grant_privs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRfcHJpdnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grant_privs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRfcHJpdnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grant_privs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRfcHJpdnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants_exec/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzX2V4ZWNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants_exec/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzX2V4ZWNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants_exec/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzX2V4ZWNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants_exec/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzX2V4ZWNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants_exec/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzX2V4ZWNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants_exec_log/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzX2V4ZWNfbG9nXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants_exec_log/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzX2V4ZWNfbG9nXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants_exec_log/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzX2V4ZWNfbG9nXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants_exec_log/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzX2V4ZWNfbG9nXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/not_typical_grants_exec_log/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzX2V4ZWNfbG9nXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schemas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NoZW1hc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schemas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NoZW1hc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schemas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NoZW1hc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schemas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NoZW1hc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schemas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NoZW1hc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grants/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grants/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grants/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grants/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grants/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grant_privs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudF9wcml2c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grant_privs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudF9wcml2c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grant_privs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudF9wcml2c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grant_privs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudF9wcml2c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grant_privs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudF9wcml2c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/servers/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2VydmVyc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/servers/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2VydmVyc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/servers/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2VydmVyc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/servers/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2VydmVyc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/servers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2VydmVyc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/tasks_not_typical_grants/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdGFza3Nfbm90X3R5cGljYWxfZ3JhbnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/tasks_not_typical_grants/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdGFza3Nfbm90X3R5cGljYWxfZ3JhbnRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/tasks_not_typical_grants/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdGFza3Nfbm90X3R5cGljYWxfZ3JhbnRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/tasks_not_typical_grants/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdGFza3Nfbm90X3R5cGljYWxfZ3JhbnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/tasks_not_typical_grants/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdGFza3Nfbm90X3R5cGljYWxfZ3JhbnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/users_roles_relation/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlcnNfcm9sZXNfcmVsYXRpb25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/users_roles_relation/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlcnNfcm9sZXNfcmVsYXRpb25cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/users_roles_relation/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlcnNfcm9sZXNfcmVsYXRpb25cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/users_roles_relation/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlcnNfcm9sZXNfcmVsYXRpb25cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/users_roles_relation/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlcnNfcm9sZXNfcmVsYXRpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-m3to0uoc82

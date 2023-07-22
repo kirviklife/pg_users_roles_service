@@ -1,0 +1,24 @@
+﻿@model APP_PG_USERS_ROLES_SERVICE.Models.db_grant_privs
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>db_grant_privs</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.db_grant_priv_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.db_grant_priv_name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.id_db_grant_privs">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

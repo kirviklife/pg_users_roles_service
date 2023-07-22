@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\APP_PG_USERS_ROLES_SERVICE.props" />
+</Project>

@@ -1,0 +1,36 @@
+﻿@model APP_PG_USERS_ROLES_SERVICE.Models.not_typical_grants_exec
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>not_typical_grants_exec</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.date_time_exec)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.date_time_exec)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.is_success)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.is_success)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.not_typical_grants)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.not_typical_grants.id_not_typical_grant)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.id_not_typical_grant_exec">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

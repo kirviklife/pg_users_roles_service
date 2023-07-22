@@ -1,0 +1,36 @@
+﻿@model APP_PG_USERS_ROLES_SERVICE.Models.schemas
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>schemas</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.schm_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.schm_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.oid_schm)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.oid_schm)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.databases)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.databases.id_db)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.id_schm">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

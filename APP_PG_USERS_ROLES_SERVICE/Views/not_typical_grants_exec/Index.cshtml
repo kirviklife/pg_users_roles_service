@@ -1,0 +1,47 @@
+﻿@model IEnumerable<APP_PG_USERS_ROLES_SERVICE.Models.not_typical_grants_exec>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.date_time_exec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_success)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.not_typical_grants)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_time_exec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_success)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.not_typical_grants.id_not_typical_grant)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id_not_typical_grant_exec">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id_not_typical_grant_exec">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id_not_typical_grant_exec">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

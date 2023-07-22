@@ -1,0 +1,71 @@
+﻿@model IEnumerable<APP_PG_USERS_ROLES_SERVICE.Models.not_typical_grants>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.last_date_time_exec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date_time_create)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_repeat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.parameters)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.roles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tasks_not_typical_grants)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.schemas)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_date_time_exec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_time_create)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_repeat)
+            </td>
+            <td>
+                    @String.Join(", ",item.parameters)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.roles.id_role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tasks_not_typical_grants.id_task)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.schemas.id_schm)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id_not_typical_grant">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id_not_typical_grant">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id_not_typical_grant">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

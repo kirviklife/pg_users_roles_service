@@ -1,0 +1,36 @@
+﻿@model APP_PG_USERS_ROLES_SERVICE.Models.databases
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>databases</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.db_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.db_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.oid_db)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.oid_db)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.servers)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.servers.id_srv)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.id_db">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
