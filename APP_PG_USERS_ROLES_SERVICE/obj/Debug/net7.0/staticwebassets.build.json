@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MqTz+P5F9/qWd9q4Cg1uTUiQIGSVBQ4AawmD7QQB6wo=",
+  "Hash": "sQJN1ftL43CmXwmsJyVdlHP2J7WFTUQ8hgmb5csHS5A=",
   "Source": "APP_PG_USERS_ROLES_SERVICE",
   "BasePath": "_content/APP_PG_USERS_ROLES_SERVICE",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\doc-thumb-2.jpg"
+    },
+    {
+      "Identity": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\Logo.png",
+      "SourceId": "APP_PG_USERS_ROLES_SERVICE",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\",
+      "BasePath": "_content/APP_PG_USERS_ROLES_SERVICE",
+      "RelativePath": "assets/images/Logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\Logo.png"
     },
     {
       "Identity": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\portal-logo.svg",

@@ -298,6 +298,26 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         public virtual ICollection<databases> databases { get; set; }
     }
 
+    [Table("view_servers_connect_checks")]
+    public class view_servers_connect_checks
+    {
+        [Key]
+        [Column(TypeName = "uuid")]
+        public Guid id_srv { get; set; }
+        [Display(Name = "IP-адрес")]
+        [RegularExpression(@"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b", ErrorMessage = "Укажите ip по формату: 000.000.000.000")]
+        public string ipadd { get; set; }
+        [Display(Name = "Имя сервера")]
+        [StringLength(75, MinimumLength = 1, ErrorMessage = "Длина строки должна быть от 1 до 75 символов")]
+        public string srv_name { get; set; }
+        [Display(Name = "Порт")]
+        public int port_srv { get; set; }
+        [Display(Name = "Имя пользователя для подключения по DBLink")]
+        public string username { get; set; }
+        [Display(Name = "Проверка коннекта")]
+        public string check { get; set; }
+    }
+
     public class tasks_not_typical_grants
     {
         [Key]

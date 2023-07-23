@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\assets\\css\\portal.css"
     },
     {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\Logo.png",
+      "PackagePath": "staticwebassets\\assets\\images\\Logo.png"
+    },
+    {
       "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\app-logo.svg",
       "PackagePath": "staticwebassets\\assets\\images\\app-logo.svg"
     },

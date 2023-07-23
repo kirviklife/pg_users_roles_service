@@ -24,6 +24,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         public DbSet<servers> servers => Set<servers>();
         public DbSet<tasks_not_typical_grants> tasks_not_typical_grants => Set<tasks_not_typical_grants>();
         public DbSet<users_roles_relation> users_roles_relation => Set<users_roles_relation>();
+        public DbSet<view_servers_connect_checks> view_servers_connect_checks => Set<view_servers_connect_checks>();
 
 
 
