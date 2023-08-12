@@ -18,14 +18,21 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
             _context = context;
         }
 
-        // GET: databases
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(Guid id)
         {
-            var dataContext = _context.databases.Include(d => d.servers);
-            return View(await dataContext.ToListAsync());
+            var dataContext = new SrvData
+            {
+                databases = await _context.databases.Where(d=>d.srv_id == id).ToListAsync(),
+                roles = await _context.roles.Where(r=>r.srv_id == id).ToListAsync(),
+				users_roles_relation = await _context.users_roles_relation.Where(r => r.roles1.srv_id == id).ToListAsync()
+			};
+            return View( dataContext);
         }
 
-        // GET: databases/Details/5
+        
+
+
+
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null || _context.databases == null)

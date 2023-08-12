@@ -16,8 +16,6 @@
 		<div class="page-utilities">
 			<div class="row g-2 justify-content-start justify-content-md-end align-items-center">
 				<div class="col-auto">
-					<form class="docs-search-form row gx-1 align-items-center">
-						<div class="col-auto">
 							<a asp-action="Create" class="btn btn-outline-primary">
 								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
 									<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -26,6 +24,9 @@
 								Добавить
 							</a>
 						</div>
+				<div class="col-auto">
+					
+					<form class="docs-search-form row gx-1 align-items-center">
 						<div class="col-auto">
 							<input type="text" id="search-docs" name="searchdocs" class="form-control search-docs" placeholder="Поиск...">
 						</div>
@@ -38,10 +39,9 @@
 				<div class="col-auto">
 
 					<select class="form-select w-auto">
-						<option selected="" value="option-1">Все</option>
-						<option value="option-2">Активные</option>
-						<option value="option-3">Неактивные</option>
-
+						<option selected="" value="0">Все</option>
+						<option value="1">Активные</option>
+						<option value="2">Неактивные</option>
 					</select>
 				</div>
 			</div><!--//row-->
@@ -76,16 +76,16 @@
                     }
 					@if (item.check != "OK")
 					{
-						<a class="app-card-link-mask" href="#file-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="@item.check"></a>
+						<a class="app-card-link-mask" asp-controller="databases" asp-action="Index" asp-route-id="@item.id_srv" data-bs-toggle="tooltip" data-bs-placement="bottom" title="@item.check"></a>
 					}
 					else
 					{
-						<a class="app-card-link-mask" href="#file-link"></a>
+						<a class="app-card-link-mask" asp-controller="databases" asp-action="Index" asp-route-id="@item.id_srv"></a>
 					}
 				</div>
 				<div class="app-card-body p-3 has-card-actions">
 
-					<h4 class="app-doc-title truncate mb-0"><a href="#file-link">@Html.DisplayFor(modelItem => item.srv_name)</a></h4>
+					<h4 class="app-doc-title truncate mb-0"><a asp-controller="databases" asp-action="Index" asp-route-id="@item.id_srv">@Html.DisplayFor(modelItem => item.srv_name)</a></h4>
 					<div class="app-doc-meta">
 						<ul class="list-unstyled mb-0">
 							<li><span class="text-muted">@Html.DisplayNameFor(model => model.ipadd)</span> @Html.DisplayFor(modelItem => item.ipadd)</li>
@@ -130,66 +130,3 @@
 		<!--//col-->
 	}
 </div><!--//row-->
-@*<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ipadd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.srv_name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.port_srv)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.check)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ipadd)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.srv_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.username)
-            </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.port_srv)
-                </td>
-                <td>
-                    @if (item.check == "OK")
-                    {
-                        <span class="cloud_ok" data-bs-toggle="tooltip" data-bs-placement="bottom" title="@item.check">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cloud-check-fill" viewBox="0 0 16 16">
-                                <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 4.854-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z" />
-                            </svg>
-                        </span>
-                    }
-                    else
-                    {
-                        <span class="cloud_error" data-bs-toggle="tooltip" data-bs-placement="bottom" title="@item.check">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cloud-slash-fill" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M3.112 5.112a3.125 3.125 0 0 0-.17.613C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13H11L3.112 5.112zm11.372 7.372L4.937 2.937A5.512 5.512 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773a3.2 3.2 0 0 1-1.516 2.711zm-.838 1.87-12-12 .708-.708 12 12-.707.707z" />
-                            </svg>
-                        </span>
-                    }
-                </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id_srv">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id_srv">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id_srv">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>*@

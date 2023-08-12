@@ -1,6 +1,4 @@
-﻿using APP_PG_USERS_ROLES_SERVICE.Models;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace APP_PG_USERS_ROLES_SERVICE.Models
@@ -193,7 +191,10 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         public DateTime? valid_until { get; set; }
         [ForeignKey("srv_id")]
         public servers servers { get; set; }
-        public roles()
+		[Display(Name = "OID объекта")]
+		[Range(1, int.MaxValue, ErrorMessage = "Только положительные числа или 0")]
+		public int oid_roles { get; set; }
+		public roles()
         {
             this.users_roles_relation1 = new HashSet<users_roles_relation>();
             this.users_roles_relation2 = new HashSet<users_roles_relation>();
@@ -279,7 +280,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         public string ipadd { get; set; }
         [Display(Name = "Имя сервера")]
         [Column(TypeName = "varchar")]
-        [StringLength(75, MinimumLength = 1, ErrorMessage = "Длина строки должна быть от 1 до 75 символов")]        
+        [StringLength(75, MinimumLength = 1, ErrorMessage = "Длина строки должна быть от 1 до 75 символов")]
         public string srv_name { get; set; }
         [Display(Name = "Порт")]
         [Column(TypeName = "int4")]
@@ -349,7 +350,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
     {
         [Key]
         public Guid id_users_roles_relation { get; set; }
-        
+
         [Display(Name = "Роль1 (которую назначаем Роли2)")]
         public Guid from_role { get; set; }
         [Display(Name = "Роль2 (которой назначаем Роль1)")]
@@ -358,9 +359,17 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         [Display(Name = "Дата и время выполнения")]
         public DateTime? date_time_excec { get; set; }
         [ForeignKey("from_role")]
-        public roles roles1{ get; set; }
+        public roles roles1 { get; set; }
         [ForeignKey("to_role")]
         public roles roles2 { get; set; }
     }
+
+    public class SrvData
+    {
+        public IEnumerable<databases> databases { get; set; }
+        public IEnumerable<roles> roles { get; set; }
+		public IEnumerable<users_roles_relation> users_roles_relation { get; set; }
+	}
+
 }
 
