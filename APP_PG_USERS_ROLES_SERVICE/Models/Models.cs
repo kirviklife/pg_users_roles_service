@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace APP_PG_USERS_ROLES_SERVICE.Models
@@ -198,11 +199,13 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         {
             this.users_roles_relation1 = new HashSet<users_roles_relation>();
             this.users_roles_relation2 = new HashSet<users_roles_relation>();
+			this.db_grants = new HashSet<db_grants>();
 
-        }
+		}
         public virtual ICollection<users_roles_relation> users_roles_relation1 { get; set; }
         public virtual ICollection<users_roles_relation> users_roles_relation2 { get; set; }
-    }
+		public virtual ICollection<db_grants> db_grants { get; set; }
+	}
 
     public class schemas
     {
@@ -369,6 +372,36 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         public IEnumerable<databases> databases { get; set; }
         public IEnumerable<roles> roles { get; set; }
 		public IEnumerable<users_roles_relation> users_roles_relation { get; set; }
+		public IEnumerable<v_users_roles_grants> v_users_roles_grants { get; set; }
+	}
+
+	public class DBData
+	{
+		public IEnumerable<databases> databases { get; set; }
+		public IEnumerable<schemas> schemas { get; set; }
+		public IEnumerable<db_grants> db_grants { get; set; }
+		public IEnumerable<db_grant_privs> db_grant_privs { get; set; }
+		public IEnumerable<tasks_not_typical_grants> tasks_not_typical_grants { get; set; }
+		public IEnumerable<not_typical_grants> not_typical_grants { get; set; }
+		public IEnumerable<schm_grants> schm_grants { get; set; }
+		public IEnumerable<schm_grant_privs> schm_grant_privs { get; set; }
+	}
+
+	[Table("v_users_roles_grants")]
+	[Keyless]
+	public class v_users_roles_grants
+	{
+		[Display(Name = "Пользователь/Роль")]
+		public string member_name { get; set; }
+		[Display(Name = "Код пользователя/роли")]
+		public int member { get; set; }
+		[Display(Name = "Присвоенная роль")]
+		public string role { get; set; }
+		[Display(Name = "Код присовенной роли")]
+		public int roleid { get; set; }
+		[Display(Name = "Путь")]
+		public string path { get; set; }
+		
 	}
 
 }

@@ -1,36 +1,229 @@
-﻿@model APP_PG_USERS_ROLES_SERVICE.Models.databases
+﻿@model APP_PG_USERS_ROLES_SERVICE.Models.DBData
 
 @{
-    ViewData["Title"] = "Details";
+	ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="row g-3 mb-4 align-items-center justify-content-between">
+	<div class="col-auto">
+		<a class="btn btn-outline-primary" asp-action="index" asp-route-id="@ViewBag.ID_Srv">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+				<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+			</svg> Вернуться
+		</a>
+	</div>
+	<div class="col-auto">
+		<div class="page-utilities">
+			<div class="row g-2 justify-content-start justify-content-md-end align-items-center">
+				<div class="col-auto">
+					<h1 class="app-page-title mb-0">Сервер <a asp-action="index" asp-route-id="@ViewBag.ID_Srv">@ViewBag.Srv_Name </a> / БД: <u><b>@ViewBag.DB_Name</b></u></h1>
 
-<div>
-    <h4>databases</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.db_name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.db_name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.oid_db)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.oid_db)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.servers)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.servers.id_srv)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.id_db">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+				</div>
+			</div><!--//row-->
+		</div><!--//table-utilities-->
+	</div><!--//col-auto-->
+</div><!--//row-->
+
+
+<nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
+	<a class="flex-sm-fill text-sm-center nav-link active" id="db-data-tab" data-bs-toggle="tab" href="#db-data" role="tab" aria-controls="db-data" aria-selected="true">Данные БД</a>
+	<a class="flex-sm-fill text-sm-center nav-link" id="schema-paid-tab" data-bs-toggle="tab" href="#schema-paid" role="tab" aria-controls="schema-paid" aria-selected="false">Схемы БД</a>
+	<a class="flex-sm-fill text-sm-center nav-link" id="tip-grants-paid-tab" data-bs-toggle="tab" href="#tip-grants-paid" role="tab" aria-controls="tip-grants-paid" aria-selected="false">Типичные гранты</a>
+	<a class="flex-sm-fill text-sm-center nav-link" id="nottip-grants-paid-tab" data-bs-toggle="tab" href="#nottip-grants-paid" role="tab" aria-controls="nottip-grants-paid" aria-selected="false">Нетипичные гранты</a>
+</nav>
+
+
+<div class="tab-content" id="orders-table-tab-content">
+	<div class="tab-pane fade show active" id="db-data" role="tabpanel" aria-labelledby="db-data-tab">
+		<div class="row gy-4">
+			<div class="col-12 col-lg-12">
+				<div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
+					<div class="app-card-header p-3 border-bottom-0">
+						<div class="row align-items-center gx-3">
+							<div class="col-auto">
+								<div class="app-icon-holder">
+									<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor" class="bi bi-database" viewBox="0 0 16 16">
+										<path d="M4.318 2.687C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4c0-.374.356-.875 1.318-1.313ZM13 5.698V7c0 .374-.356.875-1.318 1.313C10.766 8.729 9.464 9 8 9s-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777A4.92 4.92 0 0 0 13 5.698ZM14 4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13V4Zm-1 4.698V10c0 .374-.356.875-1.318 1.313C10.766 11.729 9.464 12 8 12s-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777A4.92 4.92 0 0 0 13 8.698Zm0 3V13c0 .374-.356.875-1.318 1.313C10.766 14.729 9.464 15 8 15s-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13s3.022-.289 4.096-.777c.324-.147.633-.323.904-.525Z" />
+									</svg>
+								</div><!--//icon-holder-->
+
+							</div><!--//col-->
+							<div class="col-auto">
+								<h4 class="app-card-title">Информация о БД</h4>
+							</div><!--//col-->
+						</div><!--//row-->
+					</div><!--//app-card-header-->
+					<div class="app-card-body px-4 w-100">
+						<div class="item border-bottom py-3">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>
+											Код БД (OID)
+										</th>
+										<th>
+											Имя БД
+										</th>
+									</tr>
+								</thead>
+								<tbody id="UserDataSearching">
+									@foreach (var item in Model.databases)
+									{
+										<tr>
+											<td>
+												@Html.DisplayFor(modelItem => item.oid_db)
+											</td>
+											<td>
+												@Html.DisplayFor(modelItem => item.db_name)
+											</td>
+										</tr>
+									}
+								</tbody>
+							</table>
+						</div><!--//item-->
+					</div><!--//app-card-body-->
+				</div><!--//app-card-->
+			</div><!--//col-->
+			<div class="col-12 col-lg-7">
+				<div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
+					<div class="app-card-header p-3 border-bottom-0">
+						<div class="row align-items-center gx-3">
+							<div class="col-auto">
+								<div class="app-icon-holder">
+									<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor" class="bi bi-diagram-3" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+									</svg>
+								</div><!--//icon-holder-->
+
+							</div><!--//col-->
+							<div class="col-auto">
+								<h4 class="app-card-title">Гранты</h4>
+							</div><!--//col-->
+						</div><!--//row-->
+					</div><!--//app-card-header-->
+					<div class="app-card-body px-4 w-100">
+						<div class="item border-bottom py-3" style="min-height: 240px;max-height: 240px; overflow-y:auto;-webkit-overflow-scrolling: touch;">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>
+											Роль
+										</th>
+										<th>
+											Права
+										</th>
+										<th>
+											Выполнено
+										</th>
+										<th>
+
+										</th>
+									</tr>
+								</thead>
+								<tbody id="UserDataSearching">
+									@foreach (var item in Model.db_grants.GroupBy(g => new { g.role_id }).Select(g => new { g.Key, Count = g.Count() }))
+									{
+											int i = 0;
+											@foreach (var item2 in Model.db_grants.Where(r => r.role_id == item.Key.role_id))
+											{
+												<tr>
+												@if (i < @Model.db_grants.Where(d => d.role_id == item.Key.role_id).Count() && i < 1)
+												{
+													<td rowspan="@item.Count">
+														@Html.DisplayFor(modelItem => item2.roles.role_name)
+													</td>
+													i++;
+												}
+												<td>
+													@Html.DisplayFor(modelItem => item2.db_grant_privs.db_grant_priv_name)
+												</td>
+												<td>
+													@if (item2.date_time_exec == null && item2.is_success == false)
+																			{
+														<span class="badge bg-warning">Ожидает</span>
+													}
+																			else if (item2.is_success == false)
+													{
+														<span class="badge bg-danger">Не выполнено</span>
+													}
+													else
+													{
+														<span class="badge bg-success">Выполнено</span>
+													}
+												</td>
+												<td>
+													<a asp-action="Edit" asp-route-id="@item2.id_db_grants" style="color: darkorange">
+														<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+															<path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+														</svg>
+														Отозвать
+													</a>
+												</td>
+											</tr>
+											}
+									}
+								</tbody>
+							</table>
+						</div><!--//item-->
+					</div><!--//app-card-body-->
+					<div class="app-card-footer p-4 mt-auto">
+						<a class="btn app-btn-secondary" asp-action="Create" asp-controller="db_grants" asp-route-id="@ViewBag.ID_Srv" asp-route-db="@ViewBag.ID_DB">Добавить</a>
+					</div><!--//app-card-footer-->
+
+				</div><!--//app-card-->
+			</div><!--//col-->
+			<div class="col-12 col-lg-5">
+				<div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
+					<div class="app-card-header p-3 border-bottom-0">
+						<div class="row align-items-center gx-3">
+							<div class="col-auto">
+								<div class="app-icon-holder">
+									<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor" class="bi bi-file-earmark-post" viewBox="0 0 16 16">
+										<path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+										<path d="M4 6.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7zm0-3a.5.5 0 0 1 .5-.5H7a.5.5 0 0 1 0 1H4.5a.5.5 0 0 1-.5-.5z" />
+									</svg>
+								</div><!--//icon-holder-->
+
+							</div><!--//col-->
+							<div class="col-auto">
+								<h4 class="app-card-title">Возможные гранты</h4>
+							</div><!--//col-->
+						</div><!--//row-->
+					</div><!--//app-card-header-->
+					<div class="app-card-body px-4 w-100">
+						<div class="item border-bottom py-3">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>
+											Права
+										</th>
+									</tr>
+								</thead>
+								<tbody id="UserDataSearching">
+									@foreach (var item in Model.db_grant_privs)
+									{
+										<tr>
+											<td>
+												@Html.DisplayFor(modelItem => item.db_grant_priv_name)
+											</td>
+										</tr>
+									}
+								</tbody>
+							</table>
+						</div><!--//item-->
+					</div><!--//app-card-body-->
+
+				</div><!--//app-card-->
+			</div><!--//col-->
+		</div>
+	</div><!--//tab-pane-->
+
+	<div class="tab-pane fade" id="schema-paid" role="tabpanel" aria-labelledby="schema-paid-tab">
+	</div><!--//tab-pane-->
+
+	<div class="tab-pane fade" id="tip-grants-paid" role="tabpanel" aria-labelledby="tip-grants-paid-tab">
+	</div><!--//tab-pane-->
+	<div class="tab-pane fade" id="nottip-grants-paid" role="tabpanel" aria-labelledby="nottip-grants-paid-tab">
+	</div><!--//tab-pane-->
+</div><!--//tab-content-->

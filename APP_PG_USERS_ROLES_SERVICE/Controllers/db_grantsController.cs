@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using APP_PG_USERS_ROLES_SERVICE.Models;
+using Newtonsoft.Json.Linq;
 
 namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 {
@@ -47,11 +48,11 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         }
 
         // GET: db_grants/Create
-        public IActionResult Create()
+        public IActionResult Create(Guid id, Guid db)
         {
-            ViewData["db_id"] = new SelectList(_context.databases, "id_db", "id_db");
-            ViewData["db_grant_privs_id"] = new SelectList(_context.db_grant_privs, "id_db_grant_privs", "id_db_grant_privs");
-            ViewData["role_id"] = new SelectList(_context.roles, "id_role", "id_role");
+            ViewData["db_id"] = new SelectList(_context.databases.Where(d=>d.id_db == db), "id_db", "db_name");
+            ViewData["db_grant_privs_id"] = new SelectList(_context.db_grant_privs, "id_db_grant_privs", "db_grant_priv_name");
+            ViewData["role_id"] = new SelectList(_context.roles.Where(r=>r.srv_id == id), "id_role", "role_name");
             return View();
         }
 
@@ -60,19 +61,22 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id_db_grants,db_grant_privs_id,db_id,date_time_exec,is_success,role_id")] db_grants db_grants)
+        public async Task<IActionResult> Create(Guid id, Guid db, [Bind("id_db_grants,db_grant_privs_id,db_id,date_time_exec,is_success,role_id")] db_grants db_grants)
         {
-            if (ModelState.IsValid)
+			ModelState.Remove("roles");
+			ModelState.Remove("databases");
+			ModelState.Remove("db_grant_privs");
+			if (ModelState.IsValid)
             {
                 db_grants.id_db_grants = Guid.NewGuid();
                 _context.Add(db_grants);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["db_id"] = new SelectList(_context.databases, "id_db", "id_db", db_grants.db_id);
-            ViewData["db_grant_privs_id"] = new SelectList(_context.db_grant_privs, "id_db_grant_privs", "id_db_grant_privs", db_grants.db_grant_privs_id);
-            ViewData["role_id"] = new SelectList(_context.roles, "id_role", "id_role", db_grants.role_id);
-            return View(db_grants);
+            ViewData["db_id"] = new SelectList(_context.databases.Where(d => d.id_db == db), "id_db", "db_name", db_grants.db_id);
+            ViewData["db_grant_privs_id"] = new SelectList(_context.db_grant_privs, "id_db_grant_privs", "db_grant_priv_name", db_grants.db_grant_privs_id);
+            ViewData["role_id"] = new SelectList(_context.roles.Where(r => r.srv_id == id), "id_role", "role_name", db_grants.role_id);
+            return View("create", db);
         }
 
         // GET: db_grants/Edit/5

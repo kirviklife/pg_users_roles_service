@@ -48,7 +48,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         // GET: servers/Create
         public IActionResult Create()
         {
-            return View();
+			ViewBag.Current = "Servers";
+			return View();
         }
 
         // POST: servers/Create
@@ -58,7 +59,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("id_srv,ipadd,srv_name,username,port_srv")] servers servers)
         {
-            ModelState.Remove("id_srv");
+			ViewBag.Current = "Servers";
+			ModelState.Remove("id_srv");
             if (ModelState.IsValid)
             {
                 _context.Add(servers);
@@ -71,7 +73,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         // GET: servers/Edit/5
         public async Task<IActionResult> Edit(Guid id)
         {
-            if (id == null || _context.servers == null)
+			ViewBag.Current = "Servers";
+			if (id == null || _context.servers == null)
             {
                 return NotFound();
             }
@@ -122,7 +125,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         // GET: servers/Delete/5
         public async Task<IActionResult> Delete(Guid id)
         {
-            if (id == null || _context.servers == null)
+			ViewBag.Current = "Servers";
+			if (id == null || _context.servers == null)
             {
                 return NotFound();
             }
@@ -142,7 +146,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            if (_context.servers == null)
+			ViewBag.Current = "Servers";
+			if (_context.servers == null)
             {
                 return Problem("Entity set 'DataContext.servers'  is null.");
             }

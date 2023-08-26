@@ -32,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/databases/GetUsersRoles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXEdldFVzZXJzUm9sZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/databases/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

@@ -25,10 +25,11 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         public DbSet<tasks_not_typical_grants> tasks_not_typical_grants => Set<tasks_not_typical_grants>();
         public DbSet<users_roles_relation> users_roles_relation => Set<users_roles_relation>();
         public DbSet<view_servers_connect_checks> view_servers_connect_checks => Set<view_servers_connect_checks>();
+		public DbSet<v_users_roles_grants> v_users_roles_grants => Set<v_users_roles_grants>();
 
 
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
             modelBuilder.Entity<roles>()

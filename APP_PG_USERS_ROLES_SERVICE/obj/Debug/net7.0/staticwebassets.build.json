@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sQJN1ftL43CmXwmsJyVdlHP2J7WFTUQ8hgmb5csHS5A=",
+  "Hash": "fPnHkj+DLTpJWAn2+i/+RJiIAwzgA86YclhUtMsCWG4=",
   "Source": "APP_PG_USERS_ROLES_SERVICE",
   "BasePath": "_content/APP_PG_USERS_ROLES_SERVICE",
   "Mode": "Default",
@@ -40152,6 +40152,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\load.gif",
+      "SourceId": "APP_PG_USERS_ROLES_SERVICE",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\",
+      "BasePath": "_content/APP_PG_USERS_ROLES_SERVICE",
+      "RelativePath": "load.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\load.gif"
     }
   ]
 }

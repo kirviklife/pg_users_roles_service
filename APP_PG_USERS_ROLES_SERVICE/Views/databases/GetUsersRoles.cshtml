@@ -1,0 +1,24 @@
+﻿@model IEnumerable<APP_PG_USERS_ROLES_SERVICE.Models.v_users_roles_grants>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Пользователь/роль</th>
+            <th>Присвоено</th>
+            <th>Путь</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.member_name</td>
+                <td>@item.role</td>
+                <td>@item.path</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
