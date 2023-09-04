@@ -5,6 +5,78 @@
       "PackagePath": "staticwebassets\\APP_PG_USERS_ROLES_SERVICE.bundle.scp.css"
     },
     {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\alertify.js",
+      "PackagePath": "staticwebassets\\alertify\\alertify.js"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\alertify.min.js",
+      "PackagePath": "staticwebassets\\alertify\\alertify.min.js"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\alertify.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\alertify.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\alertify.min.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\alertify.min.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\alertify.rtl.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\alertify.rtl.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\alertify.rtl.min.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\alertify.rtl.min.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\themes\\bootstrap.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\themes\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\themes\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\themes\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\themes\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\themes\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\themes\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\themes\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\themes\\default.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\themes\\default.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\themes\\default.min.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\themes\\default.min.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\themes\\default.rtl.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\themes\\default.rtl.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\themes\\default.rtl.min.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\themes\\default.rtl.min.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\themes\\semantic.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\themes\\semantic.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\themes\\semantic.min.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\themes\\semantic.min.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\themes\\semantic.rtl.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\themes\\semantic.rtl.css"
+    },
+    {
+      "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\alertify\\css\\themes\\semantic.rtl.min.css",
+      "PackagePath": "staticwebassets\\alertify\\css\\themes\\semantic.rtl.min.css"
+    },
+    {
       "Id": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\css\\portal.css",
       "PackagePath": "staticwebassets\\assets\\css\\portal.css"
     },

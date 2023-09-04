@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace APP_PG_USERS_ROLES_SERVICE.Models
 {
@@ -164,8 +165,6 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         [Display(Name = "Отчество")]
         [Column(TypeName = "varchar")]
         public string? otch { get; set; }
-        [Display(Name = "Сервер")]
-        public Guid srv_id { get; set; }
         [Display(Name = "Обновить пароль везде?")]
         [Column(TypeName = "bool")]
         public bool is_new_password { get; set; }
@@ -190,22 +189,19 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         [Display(Name = "Устанавить дату и время, после которого пароль роли перестаёт действовать")]
         [Column(TypeName = "timestamp")]
         public DateTime? valid_until { get; set; }
-        [ForeignKey("srv_id")]
-        public servers servers { get; set; }
-		[Display(Name = "OID объекта")]
-		[Range(1, int.MaxValue, ErrorMessage = "Только положительные числа или 0")]
-		public int oid_roles { get; set; }
-		public roles()
+        public roles()
         {
             this.users_roles_relation1 = new HashSet<users_roles_relation>();
             this.users_roles_relation2 = new HashSet<users_roles_relation>();
-			this.db_grants = new HashSet<db_grants>();
+            this.db_grants = new HashSet<db_grants>();
+            this.srv_roles_relations = new HashSet<srv_roles_relations>();
 
-		}
+        }
+        public virtual ICollection<srv_roles_relations> srv_roles_relations { get; set; }
         public virtual ICollection<users_roles_relation> users_roles_relation1 { get; set; }
         public virtual ICollection<users_roles_relation> users_roles_relation2 { get; set; }
-		public virtual ICollection<db_grants> db_grants { get; set; }
-	}
+        public virtual ICollection<db_grants> db_grants { get; set; }
+    }
 
     public class schemas
     {
@@ -296,10 +292,31 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         public servers()
         {
             this.databases = new HashSet<databases>();
-            this.roles = new HashSet<roles>();
+            this.srv_roles_relations = new HashSet<srv_roles_relations>();
         }
-        public virtual ICollection<roles> roles { get; set; }
+        public virtual ICollection<srv_roles_relations> srv_roles_relations { get; set; }
         public virtual ICollection<databases> databases { get; set; }
+    }
+
+    public class srv_roles_relations
+    {
+        [Key]
+        [Column(TypeName = "uuid")]
+        public Guid id_srv_role { get; set; }
+        [Display(Name = "OID объекта")]
+        [Range(1, int.MaxValue, ErrorMessage = "Только положительные числа или 0")]
+        public int oid_roles { get; set; }
+        [Display(Name = "Сервер БД")]
+        public Guid srv_id { get; set; }
+		[ForeignKey("srv_id")]
+		[JsonIgnore]
+		public virtual servers servers { get; set; }
+        [Display(Name = "Роль")]
+        
+        public Guid role_id { get; set; }
+		[ForeignKey("role_id")]
+		[JsonIgnore]
+		public virtual roles roles { get; set; }
     }
 
     [Table("view_servers_connect_checks")]
@@ -370,39 +387,39 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
     public class SrvData
     {
         public IEnumerable<databases> databases { get; set; }
-        public IEnumerable<roles> roles { get; set; }
-		public IEnumerable<users_roles_relation> users_roles_relation { get; set; }
-		public IEnumerable<v_users_roles_grants> v_users_roles_grants { get; set; }
-	}
+        public IEnumerable<srv_roles_relations> srv_roles_relations { get; set; }
+        public IEnumerable<users_roles_relation> users_roles_relation { get; set; }
+        public IEnumerable<v_users_roles_grants> v_users_roles_grants { get; set; }
+    }
 
-	public class DBData
-	{
-		public IEnumerable<databases> databases { get; set; }
-		public IEnumerable<schemas> schemas { get; set; }
-		public IEnumerable<db_grants> db_grants { get; set; }
-		public IEnumerable<db_grant_privs> db_grant_privs { get; set; }
-		public IEnumerable<tasks_not_typical_grants> tasks_not_typical_grants { get; set; }
-		public IEnumerable<not_typical_grants> not_typical_grants { get; set; }
-		public IEnumerable<schm_grants> schm_grants { get; set; }
-		public IEnumerable<schm_grant_privs> schm_grant_privs { get; set; }
-	}
+    public class DBData
+    {
+        public IEnumerable<databases> databases { get; set; }
+        public IEnumerable<schemas> schemas { get; set; }
+        public IEnumerable<db_grants> db_grants { get; set; }
+        public IEnumerable<db_grant_privs> db_grant_privs { get; set; }
+        public IEnumerable<tasks_not_typical_grants> tasks_not_typical_grants { get; set; }
+        public IEnumerable<not_typical_grants> not_typical_grants { get; set; }
+        public IEnumerable<schm_grants> schm_grants { get; set; }
+        public IEnumerable<schm_grant_privs> schm_grant_privs { get; set; }
+    }
 
-	[Table("v_users_roles_grants")]
-	[Keyless]
-	public class v_users_roles_grants
-	{
-		[Display(Name = "Пользователь/Роль")]
-		public string member_name { get; set; }
-		[Display(Name = "Код пользователя/роли")]
-		public int member { get; set; }
-		[Display(Name = "Присвоенная роль")]
-		public string role { get; set; }
-		[Display(Name = "Код присовенной роли")]
-		public int roleid { get; set; }
-		[Display(Name = "Путь")]
-		public string path { get; set; }
-		
-	}
+    [Table("v_users_roles_grants")]
+    [Keyless]
+    public class v_users_roles_grants
+    {
+        [Display(Name = "Пользователь/Роль")]
+        public string member_name { get; set; }
+        [Display(Name = "Код пользователя/роли")]
+        public int member { get; set; }
+        [Display(Name = "Присвоенная роль")]
+        public string role { get; set; }
+        [Display(Name = "Код присовенной роли")]
+        public int roleid { get; set; }
+        [Display(Name = "Путь")]
+        public string path { get; set; }
+
+    }
 
 }
 

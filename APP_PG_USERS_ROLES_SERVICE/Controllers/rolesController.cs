@@ -21,8 +21,9 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         // GET: roles
         public async Task<IActionResult> Index()
         {
-            var dataContext = _context.roles.Include(r => r.servers);
-            return View(await dataContext.ToListAsync());
+              return _context.roles != null ? 
+                          View(await _context.roles.ToListAsync()) :
+                          Problem("Entity set 'DataContext.roles'  is null.");
         }
 
         // GET: roles/Details/5
@@ -34,7 +35,6 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
             }
 
             var roles = await _context.roles
-                .Include(r => r.servers)
                 .FirstOrDefaultAsync(m => m.id_role == id);
             if (roles == null)
             {
@@ -47,7 +47,6 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         // GET: roles/Create
         public IActionResult Create()
         {
-            ViewData["srv_id"] = new SelectList(_context.servers, "id_srv", "id_srv");
             return View();
         }
 
@@ -56,9 +55,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id_role,role_name,role_pass,email,phone,fam,im,otch,srv_id,is_new_password,is_login,is_superuser,is_createdb,is_createrole,is_inherit,is_replication,valid_until")] roles roles)
+        public async Task<IActionResult> Create([Bind("id_role,role_name,role_pass,email,phone,fam,im,otch,is_new_password,is_login,is_superuser,is_createdb,is_createrole,is_inherit,is_replication,valid_until")] roles roles)
         {
-            ModelState.Remove("servers");
             if (ModelState.IsValid)
             {
                 roles.id_role = Guid.NewGuid();
@@ -66,7 +64,6 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["srv_id"] = new SelectList(_context.servers, "id_srv", "id_srv", roles.srv_id);
             return View(roles);
         }
 
@@ -77,13 +74,12 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
             {
                 return NotFound();
             }
-            
+
             var roles = await _context.roles.FindAsync(id);
             if (roles == null)
             {
                 return NotFound();
             }
-            ViewData["srv_id"] = new SelectList(_context.servers, "id_srv", "id_srv", roles.srv_id);
             return View(roles);
         }
 
@@ -92,13 +88,13 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("id_role,role_name,role_pass,email,phone,fam,im,otch,srv_id,is_new_password,is_login,is_superuser,is_createdb,is_createrole,is_inherit,is_replication,valid_until")] roles roles)
+        public async Task<IActionResult> Edit(Guid id, [Bind("id_role,role_name,role_pass,email,phone,fam,im,otch,is_new_password,is_login,is_superuser,is_createdb,is_createrole,is_inherit,is_replication,valid_until")] roles roles)
         {
             if (id != roles.id_role)
             {
                 return NotFound();
             }
-            ModelState.Remove("servers");
+
             if (ModelState.IsValid)
             {
                 try
@@ -119,7 +115,6 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["srv_id"] = new SelectList(_context.servers, "id_srv", "id_srv", roles.srv_id);
             return View(roles);
         }
 
@@ -132,7 +127,6 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
             }
 
             var roles = await _context.roles
-                .Include(r => r.servers)
                 .FirstOrDefaultAsync(m => m.id_role == id);
             if (roles == null)
             {

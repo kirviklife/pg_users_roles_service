@@ -1,0 +1,39 @@
+﻿@model APP_PG_USERS_ROLES_SERVICE.Models.srv_roles_relations
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>srv_roles_relations</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.oid_roles)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.oid_roles)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.srv_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.srv_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.role_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.role_id)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="id_srv_role" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

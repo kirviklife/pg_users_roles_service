@@ -256,6 +256,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/srv_roles_relations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc3J2X3JvbGVzX3JlbGF0aW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/srv_roles_relations/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc3J2X3JvbGVzX3JlbGF0aW9uc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/srv_roles_relations/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc3J2X3JvbGVzX3JlbGF0aW9uc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/srv_roles_relations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc3J2X3JvbGVzX3JlbGF0aW9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/srv_roles_relations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc3J2X3JvbGVzX3JlbGF0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/VS Projects/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/tasks_not_typical_grants/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdGFza3Nfbm90X3R5cGljYWxfZ3JhbnRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

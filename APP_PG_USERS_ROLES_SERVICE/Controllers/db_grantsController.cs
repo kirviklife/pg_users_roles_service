@@ -52,7 +52,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         {
             ViewData["db_id"] = new SelectList(_context.databases.Where(d=>d.id_db == db), "id_db", "db_name");
             ViewData["db_grant_privs_id"] = new SelectList(_context.db_grant_privs, "id_db_grant_privs", "db_grant_priv_name");
-            ViewData["role_id"] = new SelectList(_context.roles.Where(r=>r.srv_id == id), "id_role", "role_name");
+            ViewData["role_id"] = new SelectList(_context.roles, "id_role", "role_name");
             return View();
         }
 
@@ -75,7 +75,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
             }
             ViewData["db_id"] = new SelectList(_context.databases.Where(d => d.id_db == db), "id_db", "db_name", db_grants.db_id);
             ViewData["db_grant_privs_id"] = new SelectList(_context.db_grant_privs, "id_db_grant_privs", "db_grant_priv_name", db_grants.db_grant_privs_id);
-            ViewData["role_id"] = new SelectList(_context.roles.Where(r => r.srv_id == id), "id_role", "role_name", db_grants.role_id);
+            ViewData["role_id"] = new SelectList(_context.roles, "id_role", "role_name", db_grants.role_id);
             return View("create", db);
         }
 
