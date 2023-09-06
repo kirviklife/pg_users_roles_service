@@ -198,7 +198,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 				db_grant_privs = await _context.db_grant_privs.ToListAsync(),
 				tasks_not_typical_grants = await _context.tasks_not_typical_grants.ToListAsync(),
 				not_typical_grants = await _context.not_typical_grants.Where(n => n.schemas.db_id == id).ToListAsync(),
-				schm_grants = await _context.schm_grants.Where(s => s.schemas.db_id == id).ToListAsync(),
+				schm_grants = await _context.schm_grants.Where(s => s.schemas.db_id == id).Include(d => d.schemas).Include(d => d.schm_grant_privs).Include(d => d.roles).ToListAsync(),
 				schm_grant_privs = await _context.schm_grant_privs.ToListAsync()
 			};
 			ViewBag.ID_DB = id;
