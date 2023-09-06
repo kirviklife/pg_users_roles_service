@@ -88,26 +88,84 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 			}
 		}
 
+		public JsonResult GetUpdateRoles(Guid iddb)
+		{
+			try
+			{
+				var role_srch = (from rl_sr in _context.srv_roles_relations
+								 join rl in _context.roles
+								 on rl_sr.role_id equals rl.id_role
+								 where rl_sr.srv_id == iddb && rl.is_login == false
+								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles }).ToList();
+				return Json(role_srch);
+			}
+			catch
+			{
+				var role_srch = (from rl_sr in _context.srv_roles_relations
+								 join rl in _context.roles
+								 on rl_sr.role_id equals rl.id_role
+								 where rl_sr.srv_id == iddb && rl.is_login == false
+								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles }).ToList();
+				return Json(role_srch);
+			}
+		}
+
+
 		public JsonResult GetSearchUser(string SearchValue, Guid iddb)
 		{
-			List<roles> roles = new List<roles>();
 			try
 			{
 				if (string.IsNullOrEmpty(SearchValue))
 				{
-					roles = _context.roles.Where(d => d.is_login == true).ToList();
-					return Json(roles);
+					var role_srch = (from rl_sr in _context.srv_roles_relations
+									 join rl in _context.roles
+									 on rl_sr.role_id equals rl.id_role
+									 where rl_sr.srv_id == iddb && rl.is_login == true
+									 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch }).ToList();
+					return Json(role_srch);
 				}
 				else
 				{
-					roles = _context.roles.Where(d => (EF.Functions.Like(d.role_name, "%" + SearchValue + "%") || EF.Functions.Like(d.fam, "%" + SearchValue + "%") || EF.Functions.Like(d.im, "%" + SearchValue + "%") || EF.Functions.Like(d.otch, "%" + SearchValue + "%")) && d.is_login == true).ToList();
-					return Json(roles);
+					var role_srch = (from rl_sr in _context.srv_roles_relations
+									 join rl in _context.roles
+									 on rl_sr.role_id equals rl.id_role
+									 where rl_sr.srv_id == iddb && rl.is_login == true && (EF.Functions.Like(rl.role_name, "%" + SearchValue + "%") || EF.Functions.Like(rl.fam, "%" + SearchValue + "%") || EF.Functions.Like(rl.im, "%" + SearchValue + "%") || EF.Functions.Like(rl.otch, "%" + SearchValue + "%"))
+									 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch }).ToList();
+					return Json(role_srch);
 				}
 			}
 			catch
 			{
-				roles = _context.roles.Where(d => d.is_login == true).ToList();
-				return Json(roles);
+				var role_srch = (from rl_sr in _context.srv_roles_relations
+								 join rl in _context.roles
+								 on rl_sr.role_id equals rl.id_role
+								 where rl_sr.srv_id == iddb && rl.is_login == true
+								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch }).ToList();
+				return Json(role_srch);
+			}
+		}
+
+
+		public JsonResult GetUpdateUsers(Guid iddb)
+		{
+			try
+			{
+				var role_srch = (from rl_sr in _context.srv_roles_relations
+								 join rl in _context.roles
+								 on rl_sr.role_id equals rl.id_role
+								 where rl_sr.srv_id == iddb && rl.is_login == true
+								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch }).ToList();
+				return Json(role_srch);
+
+			}
+			catch
+			{
+				var role_srch = (from rl_sr in _context.srv_roles_relations
+								 join rl in _context.roles
+								 on rl_sr.role_id equals rl.id_role
+								 where rl_sr.srv_id == iddb && rl.is_login == true
+								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch }).ToList();
+				return Json(role_srch);
 			}
 		}
 
@@ -153,9 +211,28 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 
 
 		[HttpGet]
-		public async Task<ActionResult> GetUsersRoles(Guid id_s)
+		public async Task<ActionResult> GetUsersRoles(Guid id_s, string SearchRelRole, int selectRel)
 		{
 			IQueryable<v_users_roles_grants> order = _context.v_users_roles_grants.FromSql($"SELECT * FROM fnc_users_roles_grants ({id_s})");
+			switch (selectRel)
+			{
+				case 0:
+					order = order.Where(o => EF.Functions.Like(o.role, "%" + SearchRelRole + "%") || EF.Functions.Like(o.member_name, "%" + SearchRelRole + "%") || EF.Functions.Like(o.path, "%" + SearchRelRole + "%"));
+					break;
+				case 1:
+					order = order.Where(o => EF.Functions.Like(o.member_name, "%" + SearchRelRole + "%"));
+					break;
+				case 2:
+					order = order.Where(o => EF.Functions.Like(o.role, "%" + SearchRelRole + "%"));
+					break;
+				case 3:
+					order = order.Where(o => EF.Functions.Like(o.path, "%" + SearchRelRole + "%"));
+					break;
+				default:
+					order = order.Where(o => EF.Functions.Like(o.role, "%" + SearchRelRole + "%") || EF.Functions.Like(o.member_name, "%" + SearchRelRole + "%") || EF.Functions.Like(o.path, "%" + SearchRelRole + "%"));
+					break;
+			}
+
 			return PartialView("GetUsersRoles", order);
 		}
 

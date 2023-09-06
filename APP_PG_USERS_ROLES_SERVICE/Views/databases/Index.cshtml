@@ -2,6 +2,7 @@
 
 @{
 	ViewData["Title"] = "Index";
+
 }
 <div class="row g-3 mb-4 align-items-center justify-content-between">
 	<div class="col-auto">
@@ -94,7 +95,7 @@
 				</div><!--//item-->
 			</div><!--//app-card-body-->
 			<div class="app-card-footer p-4 mt-auto">
-				<a class="btn app-btn-secondary" href="#">Обновить данные с сервера</a>
+				<input type="submit" value="Обновить данные с сервера" id="btnupdusr" class="btn app-btn-secondary" />
 				<a class="btn app-btn-secondary" href="#">Добавить пользователя</a>
 			</div><!--//app-card-footer-->
 
@@ -165,7 +166,7 @@
 				</div><!--//item-->
 			</div><!--//app-card-body-->
 			<div class="app-card-footer p-4 mt-auto">
-				<a class="btn app-btn-secondary" href="#">Обновить данные с сервера</a>
+				<input type="submit" value="Обновить данные с сервера" id="btnupdroles" class="btn app-btn-secondary" />
 				<a class="btn app-btn-secondary" href="#">Добавить роль</a>
 			</div><!--//app-card-footer-->
 
@@ -229,7 +230,6 @@
 							}
 						</tbody>
 					</table>
-					<div id="divLoader" style="display:none; text-align:center"> <img src="~/load.gif" style="height: 110px;" alt="Loader" /> </div>
 				</div><!--//item-->
 			</div><!--//app-card-body-->
 			<div class="app-card-footer p-4 mt-auto">
@@ -252,9 +252,21 @@
 
 					</div><!--//col-->
 					<div class="col-auto">
-						<h4 class="app-card-title">Соотношение пользователей и ролей</h4>
+						<h4 class="app-card-title">Назначение ролей</h4>
+					</div><!--//col-->
+					<div class="col-auto">
+						<select class="form-select w-auto" id="selectRel">
+							<option selected="" value="0">Все</option>
+							<option value="1">Кому назначено</option>
+							<option value="2">Кто назначен</option>
+							<option value="3">Путь</option>
+						</select>
+					</div>
+					<div class="col-auto">
+						@Html.TextBox("SearchRelRole","",new { @class="form-control", placeholder="Поиск..."})
 					</div><!--//col-->
 				</div><!--//row-->
+				
 			</div><!--//app-card-header-->
 			<div class="app-card-body px-4 w-100">
 				<div class="item border-bottom py-3" style="max-height: 200px; overflow-y:auto;-webkit-overflow-scrolling: touch;">
@@ -285,7 +297,6 @@
 			var SearchID = '@ViewBag.ID_Srv';
 			var SetData = $("#DBDataSearching");
 			SetData.html("");
-			$("#divLoader").show();
 			$.ajax({
 				type: "post",
 				url: "/databases/GetSearchDB?SearchValue=" + SearchValue + "&iddb=" + SearchID,
@@ -293,12 +304,25 @@
 				success: function (result){
 						$.each(result, function(index, value){
 							var Data = "'<tr><td>" + value.oid_db + "</td><td>" + value.db_name + "</td><td><a href=\"/databases/Details/" + value.id_db + "\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\"><path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\" /><path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\" /></svg></a></td>< /tr>";
-						$("#divLoader").hide();
 						SetData.append(Data);
 
 						});
 					}
 			});
+		});
+		$("#SearchRelRole").bind('input', function () {
+			var SearchValue = $("#SearchRelRole").val();
+			var SearchValue2 = $("#selectRel").val();
+			var SearchID = '@ViewBag.ID_Srv';
+			var SetData = $("#DBDataSearching");
+			$('#dvRelRolesAndUsers').load('@Url.Action("GetUsersRoles", "databases")?id_s=' + SearchID + '&SearchRelRole=' + SearchValue + '&selectRel=' + SearchValue2);
+		});
+		$("#selectRel").on('change', function (e) {
+			var SearchValue = $("#SearchRelRole").val();
+			var SearchValue2 = $("#selectRel").val();
+			var SearchID = '@ViewBag.ID_Srv';
+			var SetData = $("#DBDataSearching");
+			$('#dvRelRolesAndUsers').load('@Url.Action("GetUsersRoles", "databases")?id_s=' + SearchID + '&SearchRelRole=' + SearchValue + '&selectRel=' + SearchValue2);
 		});
 		$("#SearchRole").bind('input', function () {
 			var SearchValue = $("#SearchRole").val();
@@ -363,7 +387,6 @@
 			var SearchID = '@ViewBag.ID_Srv';
 			var SetData = $("#DBDataSearching");
 			SetData.html("");
-			$("#divLoader").show();
 				$.ajax({
 				type: "post",
 				url: "/databases/GetUpdateDB?iddb=" + SearchID,
@@ -371,11 +394,10 @@
 				success: function (result) {
 					$.each(result, function (index, value) {
 						var Data = "'<tr><td>" + value.oid_db + "</td><td>" + value.db_name + "</td><td><a href=\"/databases/Details/" + value.id_db + "\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\"><path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\" /><path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\" /></svg></a></td>< /tr>";
-						$("#divLoader").delay(3000).hide();
 						SetData.append(Data);
 					});
 					alertify.set('notifier', 'delay', 2);
-					alertify.notify('Данные обновлены!');
+					alertify.notify('Данные по БД обновлены!');
 				}
 			});
 		});
@@ -383,7 +405,68 @@
 			var SearchID = '@ViewBag.ID_Srv';
 			$('#dvRelRolesAndUsers').load('@Url.Action("GetUsersRoles", "databases")?id_s=' + SearchID);
 			alertify.set('notifier', 'delay', 2);
-			alertify.notify('Данные обновлены!');
+			alertify.notify('Данные назначений ролей обновлены!');
+		});
+		$("#btnupdusr").click(function () {
+			var SearchID = '@ViewBag.ID_Srv';
+			var SetData = $("#UserDataSearching");
+			SetData.html("");
+			$.ajax({
+				type: "post",
+				url: "/databases/GetUpdateUsers?iddb=" + SearchID,
+				contextType: "html",
+				success: function (result) {
+					$.each(result, function (index, value) {
+						var FIO = "";
+						if (value.fam != null)
+							FIO = value.fam + " " + value.im;
+						if (value.otch != null)
+							FIO = FIO + " " + value.otch;
+						var Data = "'<tr><td>" + value.oid_roles + "</td><td>" + value.role_name + "</td><td>" + FIO + "</td><td>"
+							+ "<a style=\"color: darkorange\" href=\"/databases/Edit/" + value.id_role + "\">"
+							+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-pen\" viewBox=\"0 0 16 16\">"
+							+ "<path d=\"m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z\" />"
+							+ "</svg></a>"
+							+ "<a style=\"color: darkred\"  href=\"/databases/Delete/" + value.id_role + "\">"
+							+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-x-octagon\" viewBox=\"0 0 16 16\">"
+							+ "<path d=\"M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z\" />"
+							+ "<path d=\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\" />"
+							+ "</svg></a>"
+							+ "</td>< /tr>";
+						SetData.append(Data);
+					});
+					alertify.set('notifier', 'delay', 2);
+					alertify.notify('Данные пользователей обновлены!');
+				}
+			});
+		});
+		$("#btnupdroles").click(function () {
+			var SearchID = '@ViewBag.ID_Srv';
+			var SetData = $("#RoleDataSearching");
+			SetData.html("");
+			$.ajax({
+				type: "post",
+				url: "/databases/GetUpdateRoles?iddb=" + SearchID,
+				contextType: "html",
+				success: function (result) {
+					$.each(result, function (index, value) {
+						var Data = "'<tr><td>" + value.oid_roles + "</td><td>" + value.role_name + "</td><td>"
+							+ "<a style=\"color: darkorange\" href=\"/databases/Edit/" + value.id_role + "\">"
+							+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-pen\" viewBox=\"0 0 16 16\">"
+							+ "<path d=\"m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z\" />"
+							+ "</svg></a>"
+							+ "<a style=\"color: darkred\"  href=\"/databases/Delete/" + value.id_role + "\">"
+							+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-x-octagon\" viewBox=\"0 0 16 16\">"
+							+ "<path d=\"M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z\" />"
+							+ "<path d=\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\" />"
+							+ "</svg></a>"
+							+ "</td>< /tr>";
+						SetData.append(Data);
+					});
+					alertify.set('notifier', 'delay', 2);
+					alertify.notify('Данные ролей обновлены!');
+				}
+			});
 		});
 	});
 </script>
