@@ -6,7 +6,7 @@
 }
 <div class="row g-3 mb-4 align-items-center justify-content-between">
 	<div class="col-auto">
-		<a class="btn btn-outline-primary"  asp-action="index" asp-controller="servers">
+		<a class="btn btn-outline-primary" asp-action="index" asp-controller="servers">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
 				<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
 			</svg> Вернуться
@@ -17,13 +17,13 @@
 			<div class="row g-2 justify-content-start justify-content-md-end align-items-center">
 				<div class="col-auto">
 					<h1 class="app-page-title mb-0">Данные сервера <u><b>@ViewBag.Srv_Name</b></u></h1>
-					
+
 				</div>
 			</div><!--//row-->
 		</div><!--//table-utilities-->
 	</div><!--//col-auto-->
 </div><!--//row-->
-	
+
 <div class="row gy-4">
 	<div class="col-12 col-lg-7">
 		<div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
@@ -95,14 +95,14 @@
 				</div><!--//item-->
 			</div><!--//app-card-body-->
 			<div class="app-card-footer p-4 mt-auto">
-				<input type="submit" value="Обновить данные с сервера" id="btnupdusr" class="btn app-btn-secondary" />
-				<a class="btn app-btn-secondary" href="#">Добавить пользователя</a>
+				<input type="submit" value="Обновить данные с сервера" id="btnupdusr" data-toggle="modal" data-target="#myModal" class="btn app-btn-secondary" />
+				<button type="button" data-toggle="ajax-modal" data-target="#AddRole" class="btn app-btn-secondary" data-url="@Url.Action("CreateUser","Roles")">Добавить пользователя</button>
 			</div><!--//app-card-footer-->
 
 		</div><!--//app-card-->
 	</div><!--//col-->
 	<div class="col-12 col-lg-5">
-		<div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start" >
+		<div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
 			<div class="app-card-header p-3 border-bottom-0">
 				<div class="row align-items-center gx-3">
 					<div class="col-auto">
@@ -157,7 +157,7 @@
 												<path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z" />
 												<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
 											</svg>
-										</a> 
+										</a>
 									</td>
 								</tr>
 							}
@@ -167,7 +167,7 @@
 			</div><!--//app-card-body-->
 			<div class="app-card-footer p-4 mt-auto">
 				<input type="submit" value="Обновить данные с сервера" id="btnupdroles" class="btn app-btn-secondary" />
-				<a class="btn app-btn-secondary" href="#">Добавить роль</a>
+				<button type="button" data-toggle="ajax-modal" data-target="#AddRole" class="btn app-btn-secondary" data-url="@Url.Action("CreateRole","Roles", new { srvid = ViewBag.ID_Srv})">Добавить роль</button>
 			</div><!--//app-card-footer-->
 
 		</div><!--//app-card-->
@@ -220,9 +220,8 @@
 									</td>
 									<td>
 										<a asp-action="Details" asp-route-id="@item.id_db">
-											<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-												<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-												<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-index-thumb" viewBox="0 0 16 16">
+												<path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 0 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 1 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.118a.5.5 0 0 1-.447-.276l-1.232-2.465-2.512-4.185a.517.517 0 0 1 .809-.631l2.41 2.41A.5.5 0 0 0 6 9.5V1.75A.75.75 0 0 1 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v6.543L3.443 6.736A1.517 1.517 0 0 0 1.07 8.588l2.491 4.153 1.215 2.43A1.5 1.5 0 0 0 6.118 16h6.302a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z" />
 											</svg>
 										</a>
 									</td>
@@ -266,7 +265,7 @@
 						@Html.TextBox("SearchRelRole","",new { @class="form-control", placeholder="Поиск..."})
 					</div><!--//col-->
 				</div><!--//row-->
-				
+
 			</div><!--//app-card-header-->
 			<div class="app-card-body px-4 w-100">
 				<div class="item border-bottom py-3" style="max-height: 200px; overflow-y:auto;-webkit-overflow-scrolling: touch;">
@@ -287,11 +286,67 @@
 </div><!--//row-->
 
 
+<div id="PlaceHolderHere">
+</div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
 <script>
-	$(document).ready(function(){
+	$(function () {
+		var PlaceHolderElement = $('#PlaceHolderHere');
+		$('button[data-toggle="ajax-modal"]').click(function (event) {
+			var url = $(this).data('url');
+			$.get(url).done(function (data) {
+				PlaceHolderElement.html(data);
+				PlaceHolderElement.find('.modal').modal('show');
+			});
+		});
+		PlaceHolderElement.on('click', '[data-save="modal"]', function (event) {
+			event.preventDefault();
+			var form = $(this).parents('.modal').find('form');
+			var actionUrl = form.attr('action');
+			var dataToSend = form.serialize();
+			
+				$.ajax({
+					type: 'POST',
+					url: actionUrl,
+					data: dataToSend,
+					contentType: 'application/x-www-form-urlencoded',
+					success: function (data) {
+						PlaceHolderElement.find('.modal').modal('hide');
+						alertify.set('notifier', 'delay', 2);
+						alertify.notify('Данные обновлены!');
+					},
+					error: function (result) {
+						alertify.set('notifier', 'delay', 2);
+						alertify.error('Произошла ошибка, возможно не все поля заполнены верно!');
+					$("#PlaceHolderElement").html(result);
+					}
+				});
+		});
+		PlaceHolderElement.on('click', '[data-dismiss="modal"]', function (event) {
+			event.preventDefault();
+			PlaceHolderElement.find('.modal').modal('hide');
+		});
+	});
+
+	$("#employeeInfoId").on("submit", function (event) {
+		event.preventDefault();
+		$.ajax({
+			type: "POST",
+			url: "/Home/Create",
+			data: $('#employeeInfoId').serialize(),
+			contentType: "application/json",
+			dataType: "json",
+			success: function (response) {
+				alert("Hello")
+			}
+		});
+	});
+	$(document).ready(function () {
 		$("#SearchDB").bind('input', function () {
 			var SearchValue = $("#SearchDB").val();
 			var SearchID = '@ViewBag.ID_Srv';
@@ -301,13 +356,13 @@
 				type: "post",
 				url: "/databases/GetSearchDB?SearchValue=" + SearchValue + "&iddb=" + SearchID,
 				contextType: "html",
-				success: function (result){
-						$.each(result, function(index, value){
-							var Data = "'<tr><td>" + value.oid_db + "</td><td>" + value.db_name + "</td><td><a href=\"/databases/Details/" + value.id_db + "\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\"><path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\" /><path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\" /></svg></a></td>< /tr>";
+				success: function (result) {
+					$.each(result, function (index, value) {
+						var Data = "'<tr><td>" + value.oid_db + "</td><td>" + value.db_name + "</td><td><a href=\"/databases/Details/" + value.id_db + "\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-hand-index-thumb\" viewBox=\"0 0 16 16\"><path d=\"M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 0 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 1 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.118a.5.5 0 0 1-.447-.276l-1.232-2.465-2.512-4.185a.517.517 0 0 1 .809-.631l2.41 2.41A.5.5 0 0 0 6 9.5V1.75A.75.75 0 0 1 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v6.543L3.443 6.736A1.517 1.517 0 0 0 1.07 8.588l2.491 4.153 1.215 2.43A1.5 1.5 0 0 0 6.118 16h6.302a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z\"/></svg></a></td>< /tr>";
 						SetData.append(Data);
 
-						});
-					}
+					});
+				}
 			});
 		});
 		$("#SearchRelRole").bind('input', function () {
@@ -337,15 +392,15 @@
 					$.each(result, function (index, value) {
 						var Data = "'<tr><td>" + value.oid_roles + "</td><td>" + value.role_name + "</td><td>"
 							+ "<a style=\"color: darkorange\" href=\"/databases/Edit/" + value.id_role + "\">"
-								+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-pen\" viewBox=\"0 0 16 16\">"
-								+ "<path d=\"m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z\" />"
+							+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-pen\" viewBox=\"0 0 16 16\">"
+							+ "<path d=\"m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z\" />"
 							+ "</svg></a>"
 							+ "<a style=\"color: darkred\"  href=\"/databases/Delete/" + value.id_role + "\">"
-								+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-x-octagon\" viewBox=\"0 0 16 16\">"
-								+ "<path d=\"M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z\" />"
-								+ "<path d=\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\" />"
+							+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-x-octagon\" viewBox=\"0 0 16 16\">"
+							+ "<path d=\"M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z\" />"
+							+ "<path d=\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\" />"
 							+ "</svg></a>"
-							+"</td>< /tr>";
+							+ "</td>< /tr>";
 						SetData.append(Data);
 					});
 				}
@@ -387,13 +442,13 @@
 			var SearchID = '@ViewBag.ID_Srv';
 			var SetData = $("#DBDataSearching");
 			SetData.html("");
-				$.ajax({
+			$.ajax({
 				type: "post",
 				url: "/databases/GetUpdateDB?iddb=" + SearchID,
 				contextType: "html",
 				success: function (result) {
 					$.each(result, function (index, value) {
-						var Data = "'<tr><td>" + value.oid_db + "</td><td>" + value.db_name + "</td><td><a href=\"/databases/Details/" + value.id_db + "\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\"><path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\" /><path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\" /></svg></a></td>< /tr>";
+						var Data = "'<tr><td>" + value.oid_db + "</td><td>" + value.db_name + "</td><td><a href=\"/databases/Details/" + value.id_db + "\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-hand-index-thumb\" viewBox=\"0 0 16 16\"><path d=\"M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 0 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 1 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.118a.5.5 0 0 1-.447-.276l-1.232-2.465-2.512-4.185a.517.517 0 0 1 .809-.631l2.41 2.41A.5.5 0 0 0 6 9.5V1.75A.75.75 0 0 1 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v6.543L3.443 6.736A1.517 1.517 0 0 0 1.07 8.588l2.491 4.153 1.215 2.43A1.5 1.5 0 0 0 6.118 16h6.302a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z\"/></svg></a></td>< /tr>";
 						SetData.append(Data);
 					});
 					alertify.set('notifier', 'delay', 2);

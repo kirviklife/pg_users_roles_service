@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using APP_PG_USERS_ROLES_SERVICE.Models;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 {
@@ -44,31 +45,107 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
             return View(roles);
         }
 
-        // GET: roles/Create
-        public IActionResult Create()
+        public IActionResult CreateRole(Guid srvid)
         {
-            return View();
+            ViewBag.srvid = srvid;
+			roles roles = new roles();
+            return PartialView("CreateRole", roles);
+			//return new PartialViewResult
+			//{
+			//	ViewName = "CreateRole",
+			//	ViewData = new ViewDataDictionary<roles>(ViewData, new roles { })
+			//};
         }
 
-        // POST: roles/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id_role,role_name,role_pass,email,phone,fam,im,otch,is_new_password,is_login,is_superuser,is_createdb,is_createrole,is_inherit,is_replication,valid_until")] roles roles)
-        {
-            if (ModelState.IsValid)
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult CreateRole(roles roles, string srvid)
+		{
+			if (ModelState.IsValid)
+			{
+                var rl1 = _context.roles.Where(r => r.role_name == roles.role_name).Count();
+                if (rl1 == 0)
+                {
+                    roles.id_role = Guid.NewGuid();
+                    _context.Add(roles);
+                    _context.SaveChanges();
+                    var q1 = _context.Database.ExecuteSqlRaw($"select * from fnc_add_role('{srvid}','{roles.id_role}')");
+                    var q2 = _context.Database.ExecuteSqlRaw($"select * from update_list_roles();");
+                }
+                else
+                {
+                    var es = _context.srv_roles_relations.Where(s => s.srv_id == Guid.Parse(srvid) && s.roles.role_name == roles.role_name).Count();
+                    if (es == 0)
+                    {
+                        var rl2 = _context.roles.Where(r => r.role_name == roles.role_name).FirstOrDefault();
+                        srv_roles_relations srv_Roles_Relations = new srv_roles_relations();
+                        srv_Roles_Relations.id_srv_role = Guid.NewGuid();
+                        srv_Roles_Relations.srv_id = Guid.Parse(srvid);
+                        srv_Roles_Relations.role_id = rl2.id_role;
+                        srv_Roles_Relations.oid_roles = null;
+                        _context.Add(srv_Roles_Relations);
+                        _context.SaveChanges();
+						var q1 = _context.Database.ExecuteSqlRaw($"select * from fnc_add_role('{srvid}','{rl2.id_role}')");
+						var q2 = _context.Database.ExecuteSqlRaw($"select * from update_list_roles();");
+					}
+                }
+				return Ok();
+			}
+			return PartialView(roles);
+		}
+
+		public IActionResult CreateUser()
+		{
+			return new PartialViewResult
+			{
+				ViewName = "CreateUser",
+				ViewData = new ViewDataDictionary<roles>(ViewData, new roles { })
+			};
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult CreateUser([Bind("id_role,role_name,role_pass,email,phone,fam,im,otch,is_new_password,is_login,is_superuser,is_createdb,is_createrole,is_inherit,is_replication,valid_until")] roles roles)
+		{
+            if (roles.fam == null)
             {
-                roles.id_role = Guid.NewGuid();
-                _context.Add(roles);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ModelState.AddModelError("fam", "Необходимо указать фамилию");
             }
-            return View(roles);
-        }
+            else if (roles.im == null)
+            {
+                ModelState.AddModelError("im", "Необходимо указать имя");
+            }
+            else if (roles.email == null)
+            {
+                ModelState.AddModelError("email", "Необходимо указать отчество");
+            }
+            else if (roles.phone == null)
+            {
+                ModelState.AddModelError("phone", "Необходимо указать номер моб. телефона");
+            }
+            else if (roles.role_pass != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    roles.id_role = Guid.NewGuid();
+                    _context.Add(roles);
+                    _context.SaveChanges();
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("role_pass", "Необходимо указать пароль");
+            }
+			
+			return new PartialViewResult
+			{
+				ViewName = "CreateUser",
+				ViewData = new ViewDataDictionary<roles>(ViewData, new roles { })
+			};
+		}
 
-        // GET: roles/Edit/5
-        public async Task<IActionResult> Edit(Guid? id)
+		// GET: roles/Edit/5
+		public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null || _context.roles == null)
             {

@@ -146,6 +146,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         public Guid id_role { get; set; }
         [Display(Name = "Имя роли")]
         [Column(TypeName = "varchar")]
+        [Required(ErrorMessage = "Заполните данное поле")]
         public string role_name { get; set; }
         [Display(Name = "Пароль роли")]
         [Column(TypeName = "varchar")]
@@ -305,7 +306,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         public Guid id_srv_role { get; set; }
         [Display(Name = "OID объекта")]
         [Range(1, int.MaxValue, ErrorMessage = "Только положительные числа или 0")]
-        public int oid_roles { get; set; }
+        public int? oid_roles { get; set; }
         [Display(Name = "Сервер БД")]
         public Guid srv_id { get; set; }
 		[ForeignKey("srv_id")]
