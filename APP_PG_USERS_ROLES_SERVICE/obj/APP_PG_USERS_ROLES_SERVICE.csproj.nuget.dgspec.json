@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE.csproj": {}
+    "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE.csproj": {}
   },
   "projects": {
-    "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE.csproj": {
+    "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE.csproj",
+        "projectUniqueName": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE.csproj",
         "projectName": "APP_PG_USERS_ROLES_SERVICE",
-        "projectPath": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE.csproj",
+        "projectPath": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE.csproj",
         "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
-        "outputPath": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\obj\\",
+        "outputPath": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

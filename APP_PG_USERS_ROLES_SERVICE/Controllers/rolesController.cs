@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using APP_PG_USERS_ROLES_SERVICE.Models;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 {
@@ -61,6 +62,10 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult CreateRole(roles roles, string srvid)
 		{
+			if (roles.role_name == null)
+			{
+				return BadRequest("Необходимо указать имя роли");
+			}
 			if (ModelState.IsValid)
 			{
                 var rl1 = _context.roles.Where(r => r.role_name == roles.role_name).Count();
@@ -86,67 +91,100 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
                         _context.Add(srv_Roles_Relations);
                         _context.SaveChanges();
 						var q1 = _context.Database.ExecuteSqlRaw($"select * from fnc_add_role('{srvid}','{rl2.id_role}')");
-						var q2 = _context.Database.ExecuteSqlRaw($"select * from update_list_roles();");
+                        var q2 = _context.Database.ExecuteSqlRaw($"select * from fnc_upd_roles();");
+                        var q3 = _context.Database.ExecuteSqlRaw($"select * from update_list_roles();");
+                        
+						
 					}
                 }
 				return Ok();
 			}
-			return PartialView(roles);
+			return BadRequest("Произошла ошибка при обработке вашего запроса");
 		}
 
-		public IActionResult CreateUser()
+		public IActionResult CreateUser(Guid srvid)
 		{
-			return new PartialViewResult
-			{
-				ViewName = "CreateUser",
-				ViewData = new ViewDataDictionary<roles>(ViewData, new roles { })
-			};
-		}
+            ViewBag.srvid = srvid;
+            roles roles = new roles();
+            return PartialView("CreateUser", roles);
+        }
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult CreateUser([Bind("id_role,role_name,role_pass,email,phone,fam,im,otch,is_new_password,is_login,is_superuser,is_createdb,is_createrole,is_inherit,is_replication,valid_until")] roles roles)
+		public ActionResult CreateUser(roles roles, string srvid, bool isrole)
 		{
+            if (roles.role_name == null)
+            {
+                return BadRequest("Необходимо придумать логин");
+            }
+            var est = _context.roles.Where(r => r.role_name == roles.role_name).Count();
+            if (!isrole)
+            { 
+            if (est > 0)
+            {
+                return BadRequest("Пользователь с таким логином существует");
+            }
             if (roles.fam == null)
             {
-                ModelState.AddModelError("fam", "Необходимо указать фамилию");
+                return BadRequest("Необходимо указать фамилию");
             }
-            else if (roles.im == null)
+             if (roles.im == null)
             {
-                ModelState.AddModelError("im", "Необходимо указать имя");
+                return BadRequest("Необходимо указать имя");
             }
-            else if (roles.email == null)
+             if (roles.email == null)
             {
-                ModelState.AddModelError("email", "Необходимо указать отчество");
+                return BadRequest("Необходимо указать эл. адрес почты");
             }
-            else if (roles.phone == null)
+             if (roles.phone == null)
             {
-                ModelState.AddModelError("phone", "Необходимо указать номер моб. телефона");
+                return BadRequest("Необходимо указать номер моб. телефона");
             }
-            else if (roles.role_pass != null)
-            {
-                if (ModelState.IsValid)
+            if (roles.role_pass == null)
+            { 
+                return BadRequest("Необходимо указать пароль");
+            }
+            }
+            if (ModelState.IsValid)
                 {
-                    roles.id_role = Guid.NewGuid();
-                    _context.Add(roles);
-                    _context.SaveChanges();
-                }
-            }
-            else
-            {
-                ModelState.AddModelError("role_pass", "Необходимо указать пароль");
-            }
-			
-			return new PartialViewResult
-			{
-				ViewName = "CreateUser",
-				ViewData = new ViewDataDictionary<roles>(ViewData, new roles { })
-			};
-		}
+                    var rl1 = _context.roles.Where(r => r.role_name == roles.role_name).Count();
+                    if (rl1 == 0)
+                    {
+                        roles.id_role = Guid.NewGuid();
+                        _context.Add(roles);
+                        _context.SaveChanges();
+                        var q1 = _context.Database.ExecuteSqlRaw($"select * from fnc_add_role('{srvid}','{roles.id_role}')");
+                        var q2 = _context.Database.ExecuteSqlRaw($"select * from update_list_roles();");
+                    }
+                    else
+                    {
+                        var es = _context.srv_roles_relations.Where(s => s.srv_id == Guid.Parse(srvid) && s.roles.role_name == roles.role_name).Count();
+                        if (es == 0)
+                        {
+                            var rl2 = _context.roles.Where(r => r.role_name == roles.role_name).FirstOrDefault();
+                            srv_roles_relations srv_Roles_Relations = new srv_roles_relations();
+                            srv_Roles_Relations.id_srv_role = Guid.NewGuid();
+                            srv_Roles_Relations.srv_id = Guid.Parse(srvid);
+                            srv_Roles_Relations.role_id = rl2.id_role;
+                            srv_Roles_Relations.oid_roles = null;
+                            _context.Add(srv_Roles_Relations);
+                            _context.SaveChanges();
+                            var q1 = _context.Database.ExecuteSqlRaw($"select * from fnc_add_role('{srvid}','{rl2.id_role}')");
+                            var q2 = _context.Database.ExecuteSqlRaw($"select * from fnc_upd_roles();");
+                            var q3 = _context.Database.ExecuteSqlRaw($"select * from update_list_roles();");
 
-		// GET: roles/Edit/5
-		public async Task<IActionResult> Edit(Guid? id)
+
+                        }
+                    }
+                    return Ok();
+                }
+                return BadRequest("Произошла ошибка при обработке вашего запроса");
+            
+        }
+
+        public async Task<IActionResult> EditUser(Guid id, Guid srvid)
         {
+            ViewBag.sr = srvid;
             if (id == null || _context.roles == null)
             {
                 return NotFound();
@@ -160,24 +198,44 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
             return View(roles);
         }
 
-        // POST: roles/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("/Roles/EditUser/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("id_role,role_name,role_pass,email,phone,fam,im,otch,is_new_password,is_login,is_superuser,is_createdb,is_createrole,is_inherit,is_replication,valid_until")] roles roles)
+        public ActionResult EditUser(Guid id, roles roles, string srvi)
         {
             if (id != roles.id_role)
             {
                 return NotFound();
             }
-
+            if (roles.role_name == null)
+            {
+                return BadRequest("Необходимо указать имя роли");
+            }
+            if (roles.fam == null)
+            {
+                return BadRequest("Необходимо указать фамилию");
+            }
+            if (roles.im == null)
+            {
+                return BadRequest("Необходимо указать имя");
+            }
+            if (roles.email == null)
+            {
+                return BadRequest("Необходимо указать эл. адрес почты");
+            }
+            if (roles.phone == null)
+            {
+                return BadRequest("Необходимо указать номер моб. телефона");
+            }
+            if (roles.role_pass == null)
+            {
+                return BadRequest("Необходимо указать пароль");
+            }
             if (ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(roles);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -190,9 +248,63 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                var upd = _context.Database.ExecuteSqlRaw($"select fnc_upd_role('{srvi}','{id}');");
+                return Ok(new { result = "Redirect", url = Url.Action("index", "databases", new { id = srvi }) });
+            }
+            return BadRequest("Произошла ошибка");
+        }
+
+        public async Task<IActionResult> EditRole(Guid id, Guid srvid)
+        {
+            ViewBag.sr = srvid;
+            if (id == null || _context.roles == null)
+            {
+                return NotFound();
+            }
+
+            var roles = await _context.roles.FindAsync(id);
+            if (roles == null)
+            {
+                return NotFound();
             }
             return View(roles);
+        }
+
+
+        [HttpPost("/Roles/EditRole/{id}")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditRole(Guid id, roles roles, string srvi)
+        {
+			if (id != roles.id_role)
+            {
+                return NotFound();
+            }
+            if (roles.role_name == null)
+            {
+                return BadRequest("Необходимо указать имя роли");
+            }
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(roles);
+                    _context.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!rolesExists(roles.id_role))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                var upd = _context.Database.ExecuteSqlRaw($"select fnc_upd_role('{srvi}','{id}');");
+                return Ok(new { result = "Redirect", url = Url.Action("index", "databases", new { id = srvi }) });
+            }
+            return BadRequest("Произошла ошибка");
         }
 
         // GET: roles/Delete/5

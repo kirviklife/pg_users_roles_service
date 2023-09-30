@@ -15,7 +15,8 @@
                 
             </div>
             <div class="modal-body">
-                <form asp-action="CreateRole" id="FormAddRole" method="post" data-ajax="true">
+                <form asp-action="CreateRole" id="FormAddRole" method="post" data-ajax="true" data-ajax-method="POST" data-ajax-success="Bindgrid"
+                      asp-antiforgery="true">
                     <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
                     <input name="srvid" type="hidden" value="@ViewBag.srvid.ToString()" />
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -52,7 +53,7 @@
                     <div class="col-12 col-md-6">
                                             <div class="form-check">
                         <label class="form-check-label">
-                            <input class="form-check-input" asp-for="is_inherit" /> @Html.DisplayNameFor(model => model.is_inherit)
+                            <input class="form-check-input" asp-for="is_inherit" checked /> @Html.DisplayNameFor(model => model.is_inherit)
                         </label>
                                             </div>
                     </div>
@@ -76,3 +77,8 @@
 </div>
 
 
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -63,7 +63,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 									 join rl in _context.roles
 									 on rl_sr.role_id equals rl.id_role
 									 where rl_sr.srv_id == iddb && rl.is_login == false
-									 select new { rl.role_name, rl.id_role, rl_sr.oid_roles }).ToList();
+									 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl_sr.srv_id }).ToList();
 					return Json(role_srch);
 				}
 				else
@@ -73,7 +73,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 									 on rl_sr.role_id equals rl.id_role
 									 where EF.Functions.Like(rl.role_name, "%" + SearchValue + "%")
 									 && rl_sr.srv_id == iddb && rl.is_login == false
-									 select new { rl.role_name, rl.id_role, rl_sr.oid_roles }).ToList();
+									 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl_sr.srv_id }).ToList();
 					return Json(role_srch);
 				}
 			}
@@ -83,7 +83,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 								 join rl in _context.roles
 								 on rl_sr.role_id equals rl.id_role
 								 where rl_sr.srv_id == iddb && rl.is_login == false
-								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles }).ToList();
+								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl_sr.srv_id }).ToList();
 				return Json(role_srch);
 			}
 		}
@@ -92,20 +92,22 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 		{
 			try
 			{
+				var q3 = _context.Database.ExecuteSqlRaw($"select * from update_list_roles();");
 				var role_srch = (from rl_sr in _context.srv_roles_relations
 								 join rl in _context.roles
 								 on rl_sr.role_id equals rl.id_role
 								 where rl_sr.srv_id == iddb && rl.is_login == false
-								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles }).ToList();
+								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl_sr.srv_id }).ToList();
 				return Json(role_srch);
 			}
 			catch
 			{
+				var q3 = _context.Database.ExecuteSqlRaw($"select * from update_list_roles();");
 				var role_srch = (from rl_sr in _context.srv_roles_relations
 								 join rl in _context.roles
 								 on rl_sr.role_id equals rl.id_role
 								 where rl_sr.srv_id == iddb && rl.is_login == false
-								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles }).ToList();
+								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl_sr.srv_id }).ToList();
 				return Json(role_srch);
 			}
 		}
@@ -121,7 +123,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 									 join rl in _context.roles
 									 on rl_sr.role_id equals rl.id_role
 									 where rl_sr.srv_id == iddb && rl.is_login == true
-									 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch }).ToList();
+									 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch, rl_sr.srv_id }).ToList();
 					return Json(role_srch);
 				}
 				else
@@ -130,7 +132,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 									 join rl in _context.roles
 									 on rl_sr.role_id equals rl.id_role
 									 where rl_sr.srv_id == iddb && rl.is_login == true && (EF.Functions.Like(rl.role_name, "%" + SearchValue + "%") || EF.Functions.Like(rl.fam, "%" + SearchValue + "%") || EF.Functions.Like(rl.im, "%" + SearchValue + "%") || EF.Functions.Like(rl.otch, "%" + SearchValue + "%"))
-									 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch }).ToList();
+									 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch, rl_sr.srv_id }).ToList();
 					return Json(role_srch);
 				}
 			}
@@ -140,7 +142,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 								 join rl in _context.roles
 								 on rl_sr.role_id equals rl.id_role
 								 where rl_sr.srv_id == iddb && rl.is_login == true
-								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch }).ToList();
+								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch, rl_sr.srv_id }).ToList();
 				return Json(role_srch);
 			}
 		}
@@ -150,21 +152,23 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 		{
 			try
 			{
+				var q3 = _context.Database.ExecuteSqlRaw($"select * from update_list_roles();");
 				var role_srch = (from rl_sr in _context.srv_roles_relations
 								 join rl in _context.roles
 								 on rl_sr.role_id equals rl.id_role
 								 where rl_sr.srv_id == iddb && rl.is_login == true
-								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch }).ToList();
+								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch, rl_sr.srv_id }).ToList();
 				return Json(role_srch);
 
 			}
 			catch
 			{
+				var q3 = _context.Database.ExecuteSqlRaw($"select * from update_list_roles();");
 				var role_srch = (from rl_sr in _context.srv_roles_relations
 								 join rl in _context.roles
 								 on rl_sr.role_id equals rl.id_role
 								 where rl_sr.srv_id == iddb && rl.is_login == true
-								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch }).ToList();
+								 select new { rl.role_name, rl.id_role, rl_sr.oid_roles, rl.fam, rl.im, rl.otch, rl_sr.srv_id }).ToList();
 				return Json(role_srch);
 			}
 		}

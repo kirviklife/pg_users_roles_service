@@ -54,7 +54,7 @@
 									Код роли (OID)
 								</th>
 								<th>
-									Имя роли
+									Логин
 								</th>
 								<th>
 									ФИО
@@ -76,12 +76,12 @@
 										@Html.DisplayFor(modelItem => item.roles.fam) @Html.DisplayFor(modelItem => item.roles.im) @Html.DisplayFor(modelItem => item.roles.otch)
 									</td>
 									<td>
-										<a asp-action="Edit" asp-route-id="@item.roles.id_role" style="color: darkorange">
+										<a asp-action="EditUser" asp-controller="Roles" asp-route-id="@item.roles.id_role" asp-route-srvid=@item.srv_id style="color: darkorange">
 											<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
 												<path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
 											</svg>
 										</a>
-										<a asp-action="Delete" asp-route-id="@item.roles.id_role" style="color: darkred">
+										<a asp-action="Delete" asp-controller="Roles" asp-route-id="@item.roles.id_role" asp-route-srvid=@item.srv_id style="color: darkred">
 											<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-x-octagon" viewBox="0 0 16 16">
 												<path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z" />
 												<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
@@ -96,7 +96,7 @@
 			</div><!--//app-card-body-->
 			<div class="app-card-footer p-4 mt-auto">
 				<input type="submit" value="Обновить данные с сервера" id="btnupdusr" data-toggle="modal" data-target="#myModal" class="btn app-btn-secondary" />
-				<button type="button" data-toggle="ajax-modal" data-target="#AddRole" class="btn app-btn-secondary" data-url="@Url.Action("CreateUser","Roles")">Добавить пользователя</button>
+				<button type="button" data-toggle="ajax-modal" data-target="#AddRole" class="btn app-btn-secondary" data-url="@Url.Action("CreateUser","Roles", new { srvid = ViewBag.ID_Srv})">Добавить пользователя</button>
 			</div><!--//app-card-footer-->
 
 		</div><!--//app-card-->
@@ -147,12 +147,12 @@
 									</td>
 
 									<td>
-										<a asp-action="Edit" asp-route-id="@item.roles.id_role" style="color: darkorange">
+										<a asp-action="EditRole" asp-controller="Roles" asp-route-srvid=@item.srv_id asp-route-id="@item.roles.id_role" style="color: darkorange">
 											<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
 												<path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
 											</svg>
 										</a>
-										<a asp-action="Delete" asp-route-id="@item.roles.id_role" style="color: darkred">
+										<a asp-action="Delete" asp-controller="Roles" asp-route-srvid=@item.srv_id asp-route-id="@item.roles.id_role" style="color: darkred">
 											<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-x-octagon" viewBox="0 0 16 16">
 												<path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z" />
 												<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
@@ -294,6 +294,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+
 <script>
 	$(function () {
 		var PlaceHolderElement = $('#PlaceHolderHere');
@@ -309,23 +310,23 @@
 			var form = $(this).parents('.modal').find('form');
 			var actionUrl = form.attr('action');
 			var dataToSend = form.serialize();
-			
-				$.ajax({
-					type: 'POST',
-					url: actionUrl,
-					data: dataToSend,
-					contentType: 'application/x-www-form-urlencoded',
-					success: function (data) {
-						PlaceHolderElement.find('.modal').modal('hide');
-						alertify.set('notifier', 'delay', 2);
-						alertify.notify('Данные обновлены!');
-					},
-				error: function (xhr, status, error) {
-						alertify.set('notifier', 'delay', 2);
-						alertify.error('Произошла ошибка, возможно не все поля заполнены верно!');
-					$("#PlaceHolderElement").html(result);
-					}
-				});
+			$.ajax({
+				type: 'POST',
+				url: actionUrl,
+				data: dataToSend,
+				contentType: 'application/x-www-form-urlencoded',
+				success: function (data) {
+					PlaceHolderElement.find('.modal').modal('hide');
+					alertify.set('notifier', 'delay', 2);
+					location.reload();
+					alertify.notify('Данные обновлены!');
+				},
+				error: function (xhr) {
+					alertify.set('notifier', 'delay', 2);
+					alertify.error(xhr.responseText);
+					console.log(xhr.responseText);
+				}
+			});
 		});
 		PlaceHolderElement.on('click', '[data-dismiss="modal"]', function (event) {
 			event.preventDefault();
@@ -391,11 +392,11 @@
 				success: function (result) {
 					$.each(result, function (index, value) {
 						var Data = "'<tr><td>" + value.oid_roles + "</td><td>" + value.role_name + "</td><td>"
-							+ "<a style=\"color: darkorange\" href=\"/databases/Edit/" + value.id_role + "\">"
+							+ "<a style=\"color: darkorange\" href=\"/roles/EditRole/" + value.id_role + "?srvid="+value.srv_id+"\">"
 							+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-pen\" viewBox=\"0 0 16 16\">"
 							+ "<path d=\"m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z\" />"
 							+ "</svg></a>"
-							+ "<a style=\"color: darkred\"  href=\"/databases/Delete/" + value.id_role + "\">"
+							+ "<a style=\"color: darkred\"  href=\"/roles/Delete/" + value.id_role + "?srvid=" + value.srv_id + "\">"
 							+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-x-octagon\" viewBox=\"0 0 16 16\">"
 							+ "<path d=\"M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z\" />"
 							+ "<path d=\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\" />"
@@ -423,11 +424,11 @@
 						if (value.otch != null)
 							FIO = FIO + " " + value.otch;
 						var Data = "'<tr><td>" + value.oid_roles + "</td><td>" + value.role_name + "</td><td>" + FIO + "</td><td>"
-							+ "<a style=\"color: darkorange\" href=\"/databases/Edit/" + value.id_role + "\">"
+							+ "<a style=\"color: darkorange\" href=\"/roles/EditUser/" + value.id_role + "?srvid=" + value.srv_id + "\">"
 							+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-pen\" viewBox=\"0 0 16 16\">"
 							+ "<path d=\"m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z\" />"
 							+ "</svg></a>"
-							+ "<a style=\"color: darkred\"  href=\"/databases/Delete/" + value.id_role + "\">"
+							+ "<a style=\"color: darkred\"  href=\"/roles/DeleteUser/" + value.id_role + "?srvid=" + value.srv_id + "\">"
 							+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-x-octagon\" viewBox=\"0 0 16 16\">"
 							+ "<path d=\"M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z\" />"
 							+ "<path d=\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\" />"
@@ -478,11 +479,11 @@
 						if (value.otch != null)
 							FIO = FIO + " " + value.otch;
 						var Data = "'<tr><td>" + value.oid_roles + "</td><td>" + value.role_name + "</td><td>" + FIO + "</td><td>"
-							+ "<a style=\"color: darkorange\" href=\"/databases/Edit/" + value.id_role + "\">"
+							+ "<a style=\"color: darkorange\" href=\"/roles/EditUser/" + value.id_role + "?srvid=" + value.srv_id + "\">"
 							+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-pen\" viewBox=\"0 0 16 16\">"
 							+ "<path d=\"m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z\" />"
 							+ "</svg></a>"
-							+ "<a style=\"color: darkred\"  href=\"/databases/Delete/" + value.id_role + "\">"
+							+ "<a style=\"color: darkred\"  href=\"/roles/DeleteUser/" + value.id_role + "?srvid=" + value.srv_id + "\">"
 							+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-x-octagon\" viewBox=\"0 0 16 16\">"
 							+ "<path d=\"M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z\" />"
 							+ "<path d=\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\" />"
@@ -506,11 +507,11 @@
 				success: function (result) {
 					$.each(result, function (index, value) {
 						var Data = "'<tr><td>" + value.oid_roles + "</td><td>" + value.role_name + "</td><td>"
-							+ "<a style=\"color: darkorange\" href=\"/databases/Edit/" + value.id_role + "\">"
+							+ "<a style=\"color: darkorange\" href=\"/roles/EditRole/" + value.id_role + "?srvid=" + value.srv_id + "\">"
 							+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-pen\" viewBox=\"0 0 16 16\">"
 							+ "<path d=\"m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z\" />"
 							+ "</svg></a>"
-							+ "<a style=\"color: darkred\"  href=\"/databases/Delete/" + value.id_role + "\">"
+							+ "<a style=\"color: darkred\"  href=\"/roles/Delete/" + value.id_role + "?srvid=" + value.srv_id + "\">"
 							+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" fill=\"currentColor\" class=\"bi bi-x-octagon\" viewBox=\"0 0 16 16\">"
 							+ "<path d=\"M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z\" />"
 							+ "<path d=\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\" />"

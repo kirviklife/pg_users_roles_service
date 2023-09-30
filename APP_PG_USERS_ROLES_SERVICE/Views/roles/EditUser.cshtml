@@ -1,0 +1,153 @@
+﻿@model APP_PG_USERS_ROLES_SERVICE.Models.roles
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<h1>Изменение настроек пользователя</h1>
+<hr class="mb-4">
+
+<div class="row g-4 settings-section">
+    <div class="col-12 col-md-4">
+        <h3 class="section-title">Описание формы</h3>
+        <div class="section-intro">На данной форме возможно изменить параметры и настройки пользователя в БД PostgreSQL.</div>
+        <div class="section-intro" style="color:red;">При изменении параметров, данные настройки применятся на всех серверах БД, где существует данный пользователь.</div>
+    </div>
+    <div class="col-12 col-md-8">
+        <div class="app-card app-card-settings shadow-sm p-4">
+
+            <div class="app-card-body" id="PlaceHolderHere">
+                <form asp-action="EditUser" id="EditUser" method="post" data-ajax="true" data-ajax-method="POST" data-ajax-success="Bindgrid"
+                      asp-antiforgery="true">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="id_role" />
+                    <input name="srvi" type="hidden" value="@ViewBag.sr.ToString()" />
+                    <div class="row g-4 settings-section">
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">Логин пользователя</label>
+                            <span class="ms-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Необходимо указать логин по которому пользователь сможет подключаться к БД">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                    <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
+                                    <circle cx="8" cy="4.5" r="1" />
+                                </svg>
+                            </span>
+                            <input asp-for="role_name" class="form-control" />
+                            <span asp-validation-for="role_name" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label asp-for="role_pass" class="form-label"></label>
+                            <input asp-for="role_pass" class="form-control" />
+                            <span asp-validation-for="role_pass" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row g-4 settings-section">
+                        <div class="col-12 col-md-6">
+                            <label asp-for="email" class="form-label"></label>
+                            <input asp-for="email" class="form-control" />
+                            <span asp-validation-for="email" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label asp-for="phone" class="form-label"></label>
+                            <input asp-for="phone" class="form-control" />
+                            <span asp-validation-for="phone" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row g-4 settings-section">
+                        <div class="col-12 col-md-4">
+                            <label asp-for="fam" class="form-label"></label>
+                            <input asp-for="fam" class="form-control" />
+                            <span asp-validation-for="fam" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label asp-for="im" class="form-label"></label>
+                            <input asp-for="im" class="form-control" />
+                            <span asp-validation-for="im" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label asp-for="otch" class="form-label"></label>
+                            <input asp-for="otch" class="form-control" />
+                            <span asp-validation-for="otch" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row g-4 settings-section">
+                        <div class="col-12 col-md-6">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="is_new_password" /> @Html.DisplayNameFor(model => model.is_new_password)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="is_login" checked /> @Html.DisplayNameFor(model => model.is_login)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="is_superuser" /> @Html.DisplayNameFor(model => model.is_superuser)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label asp-for="valid_until" class="form-label">Срок действия пароля</label>
+                            <input asp-for="valid_until" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="mb-3">
+                        <a class="btn btn-warning" asp-action="Index" asp-controller="databases" asp-route-id="@ViewBag.sr">Отменить и вернуться</a>
+                        <button type="button" data-save="roleedit" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </form>
+            </div><!--//app-card-body-->
+
+        </div><!--//app-card-->
+    </div>
+</div><!--//row-->
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+
+        $(function () {
+            var PlaceHolderElement = $('#PlaceHolderHere');
+            PlaceHolderElement.on('click', '[data-save="roleedit"]', function (event) {
+                event.preventDefault();
+                var form = $('#EditUser');
+                var dataToSend = form.serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("EditUser", "Roles", new{id=Model.id_role})',
+                    data: dataToSend,
+                    contentType: 'application/x-www-form-urlencoded',
+                    success: function (response) {
+                            window.location = response.url;
+                    },
+                    error: function (xhr) {
+                        alertify.set('notifier', 'delay', 2);
+                        alertify.error(xhr.responseText);
+                        console.log(dataToSend);
+                    }
+                });
+            });
+        })
+    </script>
+}
+
+
+
+
+
+

@@ -17,8 +17,11 @@
                 
             </div>
             <div class="modal-body">
-                <form asp-action="CreateUser">
+                <form asp-action="CreateUser" id="FormAddUser" method="post" data-ajax="true" data-ajax-method="POST" data-ajax-success="Bindgrid"
+                      asp-antiforgery="true"
+                    >
                     <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                    <input name="srvid" type="hidden" value="@ViewBag.srvid.ToString()" />
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="row g-4 settings-section">
                         <div class="col-12 col-md-6">
@@ -92,6 +95,19 @@
                                     <input class="form-check-input" asp-for="is_superuser" /> @Html.DisplayNameFor(model => model.is_superuser)
                                 </label>
                             </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label asp-for="valid_until" class="form-label">Срок действия пароля</label>
+                            <input asp-for="valid_until" class="form-control" />
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="col-12 col-md-12">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" value="true" type="checkbox" name="isrole" id="isrole" /> Вы хотите добавить добавить существующего пользователя?
+                            </label>
+                            <label style="color: red;">Внимание! При проставлении данного параметра, необходимо указать только логин пользователя (прочие параметры будут игнорироваться)</label>
                         </div>
                     </div>
                     

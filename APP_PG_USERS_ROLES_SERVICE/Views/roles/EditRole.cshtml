@@ -1,0 +1,105 @@
+﻿@model APP_PG_USERS_ROLES_SERVICE.Models.roles
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<h1>Изменение роли</h1>
+<hr class="mb-4">
+
+<div class="row g-4 settings-section">
+    <div class="col-12 col-md-4">
+        <h3 class="section-title">Описание формы</h3>
+        <div class="section-intro">На данной форме возможно изменить параметры и настройки роли в БД PostgreSQL.</div>
+        <div class="section-intro" style="color:red;">При изменении параметров, данные настройки применятся везде, где присуствует данная роль, в том числе и ее имя.</div>
+    </div>
+    <div class="col-12 col-md-8">
+        <div class="app-card app-card-settings shadow-sm p-4">
+
+            <div class="app-card-body" id="PlaceHolderHere">
+                <form asp-action="EditRole" id="EditRole" method="post" data-ajax="true" data-ajax-method="POST" data-ajax-success="Bindgrid"
+                      asp-antiforgery="true">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="id_role" />
+                    <input name="srvi" type="hidden" value="@ViewBag.sr.ToString()" />
+                    <div class="mb-3">
+                        <label asp-for="role_name" class="control-label"></label>
+                        <input asp-for="role_name" class="form-control" />
+                        <span asp-validation-for="role_name" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="is_superuser" /> @Html.DisplayNameFor(model => model.is_superuser)
+                        </label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="is_createdb" /> @Html.DisplayNameFor(model => model.is_createdb)
+                        </label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="is_createrole" /> @Html.DisplayNameFor(model => model.is_createrole)
+                        </label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="is_inherit" /> @Html.DisplayNameFor(model => model.is_inherit)
+                        </label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="is_replication" /> @Html.DisplayNameFor(model => model.is_replication)
+                        </label>
+                    </div>
+                    <br />
+                    <div class="mb-3">
+                        <a class="btn btn-warning" asp-action="Index" asp-controller="databases" asp-route-id="@ViewBag.sr">Отменить и вернуться</a>
+                        <button type="button" data-save="roleedit" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </form>
+            </div><!--//app-card-body-->
+
+        </div><!--//app-card-->
+    </div>
+</div><!--//row-->
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+
+        $(function () {
+            var PlaceHolderElement = $('#PlaceHolderHere');
+            PlaceHolderElement.on('click', '[data-save="roleedit"]', function (event) {
+                event.preventDefault();
+                var form = $('#EditRole');
+                var dataToSend = form.serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("EditRole", "Roles", new{id=Model.id_role})',
+                    data: dataToSend,
+                    contentType: 'application/x-www-form-urlencoded',
+                    success: function (response) {
+                            window.location = response.url;
+                    },
+                    error: function (xhr) {
+                        alertify.set('notifier', 'delay', 2);
+                        alertify.error(xhr.responseText);
+                        console.log(dataToSend);
+                    }
+                });
+            });
+        })
+    </script>
+}
+
+
+
+
+
+

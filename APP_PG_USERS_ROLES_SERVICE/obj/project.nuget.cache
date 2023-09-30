@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0czT5SYSOmQVJRBvwXpAdAQBGJ04TmY9M9IscWr9HcQpiCrN/SmeJtQgHZgW4Htp8w7Mq/9CvPsVt7AV7v7f3g==",
+  "dgSpecHash": "3SCvJQTu24Nfcj6m0q16pvik8ahHW4DshHjycFW4BX4mjt95O1aaA4RaLc9I3vFc8t9buPRTb8yKgG33lDgtkQ==",
   "success": true,
-  "projectFilePath": "D:\\VS Projects\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE.csproj",
+  "projectFilePath": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HUAWEI\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\HUAWEI\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
