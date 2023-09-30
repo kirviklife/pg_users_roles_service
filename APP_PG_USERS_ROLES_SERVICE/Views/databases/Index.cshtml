@@ -320,7 +320,7 @@
 						alertify.set('notifier', 'delay', 2);
 						alertify.notify('Данные обновлены!');
 					},
-					error: function (result) {
+				error: function (xhr, status, error) {
 						alertify.set('notifier', 'delay', 2);
 						alertify.error('Произошла ошибка, возможно не все поля заполнены верно!');
 					$("#PlaceHolderElement").html(result);
