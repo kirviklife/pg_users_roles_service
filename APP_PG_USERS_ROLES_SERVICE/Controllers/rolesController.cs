@@ -308,41 +308,35 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         }
 
         // GET: roles/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
-        {
+        public ActionResult Delete(Guid? id,Guid srvid)
+        { 
             if (id == null || _context.roles == null)
             {
                 return NotFound();
             }
-
-            var roles = await _context.roles
-                .FirstOrDefaultAsync(m => m.id_role == id);
+			ViewBag.srvid = srvid;
+			var roles = _context.roles
+                .FirstOrDefault(m => m.id_role == id);
             if (roles == null)
             {
                 return NotFound();
             }
 
-            return View(roles);
-        }
+			return PartialView("Delete", roles);
+		}
 
         // POST: roles/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
+		[ValidateAntiForgeryToken]
+		public ActionResult DeleteConfirmed(Guid id, string srvi)
         {
             if (_context.roles == null)
             {
-                return Problem("Entity set 'DataContext.roles'  is null.");
-            }
-            var roles = await _context.roles.FindAsync(id);
-            if (roles != null)
-            {
-                _context.roles.Remove(roles);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+				return BadRequest("Произошла ошибка");
+			}
+            var upd = _context.Database.ExecuteSqlRaw($"select fnc_del_role('{srvi}','{id}','one');");
+            return Ok();
+		}
 
         private bool rolesExists(Guid id)
         {

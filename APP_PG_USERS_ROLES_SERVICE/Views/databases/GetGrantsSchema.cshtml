@@ -1,0 +1,51 @@
+﻿@model IEnumerable<APP_PG_USERS_ROLES_SERVICE.Models.schm_grants>
+
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				Схема
+			</th>
+			<th>
+				Роль
+			</th>
+			<th>
+				Права
+			</th>
+			<th>
+			</th>
+		</tr>
+	</thead>
+	<tbody id="UserDataSearching">
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.schemas.schm_name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.roles.role_name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.schm_grant_privs.schm_grant_priv_name)
+				</td>
+				<td>
+					@if (item.is_success && item.date_time_exec != null)
+					{
+						<span class="badge bg-success">Выполнено</span>
+					}
+					else if (!item.is_success && item.date_time_exec != null)
+					{
+						<span class="badge bg-danger">Не выполнено</span>
+					}
+					else
+					{
+						<span class="badge bg-warning">Ожидает</span>
+					}
+				</td>
+
+			</tr>
+		}
+	</tbody>
+</table>

@@ -241,11 +241,91 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 		}
 
 
+		[HttpGet]
+		public async Task<ActionResult> GetGrantsDb(Guid iddb, string SearchDB)
+		{
+			if (SearchDB == null || SearchDB == "")
+			{
+				var db_grants = await _context.db_grants.Where(g => g.db_id == iddb).Include(d => d.databases).Include(d => d.db_grant_privs).Include(d => d.roles).ToListAsync();
+				return PartialView("GetGrantsDb", db_grants);
+			}
+			else
+			{
+				var db_grants = await _context.db_grants.Where(g => g.db_id == iddb && (EF.Functions.Like(g.databases.db_name, "%" + SearchDB + "%") || EF.Functions.Like(g.roles.role_name, "%" + SearchDB + "%") || EF.Functions.Like(g.db_grant_privs.db_grant_priv_name, "%" + SearchDB + "%"))).Include(d => d.databases).Include(d => d.db_grant_privs).Include(d => d.roles).ToListAsync();
+				return PartialView("GetGrantsDb", db_grants);
+			}
+
+		}
+
+		[HttpGet]
+		public async Task<ActionResult> GetGrantsSchema(Guid iddb, string SearchDB)
+		{
+			if (SearchDB == null || SearchDB == "")
+			{
+				var db_grants = await _context.schm_grants.Where(s => s.schemas.db_id == iddb).Include(d => d.schemas).Include(d => d.schm_grant_privs).Include(d => d.roles).ToListAsync();
+				return PartialView("GetGrantsSchema", db_grants);
+			}
+			else
+			{
+				var db_grants = await _context.schm_grants.Where(s => s.schemas.db_id == iddb && (EF.Functions.Like(s.schemas.schm_name, "%" + SearchDB + "%")|| EF.Functions.Like(s.roles.role_name, "%" + SearchDB + "%") || EF.Functions.Like(s.schm_grant_privs.schm_grant_priv_name, "%" + SearchDB + "%"))).Include(d => d.schemas).Include(d => d.schm_grant_privs).Include(d => d.roles).ToListAsync();
+				return PartialView("GetGrantsSchema", db_grants);
+			}
+
+		}
+
+		[HttpGet]
+		public async Task<ActionResult> GetSchemas(Guid iddb, string SearchDB)
+		{
+			if (SearchDB == null || SearchDB == "")
+			{
+				var db_grants = await _context.schemas.Where(s => s.db_id == iddb).ToListAsync();
+				return PartialView("GetSchemas", db_grants);
+			}
+			else
+			{
+				var db_grants = await _context.schemas.Where(s => s.db_id == iddb && EF.Functions.Like(s.schm_name, "%" + SearchDB + "%")).ToListAsync();
+				return PartialView("GetSchemas", db_grants);
+			}
+
+		}
+
+		[HttpGet]
+		public async Task<ActionResult> GetTasks(string SearchDB)
+		{
+			if (SearchDB == null || SearchDB == "")
+			{
+				var db_grants = await _context.tasks_not_typical_grants.ToListAsync();
+				return PartialView("GetTasks", db_grants);
+			}
+			else
+			{
+				var db_grants = await _context.tasks_not_typical_grants.Where(g=> EF.Functions.Like(g.task_name, "%" + SearchDB + "%") || EF.Functions.Like(g.task_descr, "%" + SearchDB + "%") || EF.Functions.Like(g.task_script, "%" + SearchDB + "%")).ToListAsync();
+				return PartialView("GetTasks", db_grants);
+			}
+				
+
+		}
+
+		[HttpGet]
+		public async Task<ActionResult> GetNotTasks(Guid iddb, string SearchDB)
+		{
+			if (SearchDB == null || SearchDB == "")
+			{
+				var db_grants = await _context.not_typical_grants.Include(n => n.roles)
+				.Include(n => n.schemas)
+				.Include(n => n.tasks_not_typical_grants).Where(g=>g.schemas.db_id == iddb).ToListAsync();
+				return PartialView("GetNotTasks", db_grants);
+			}
+			else
+			{
+				var db_grants = await _context.not_typical_grants.Include(n => n.roles)
+				.Include(n => n.schemas)
+				.Include(n => n.tasks_not_typical_grants).Where(g => g.schemas.db_id == iddb &&( EF.Functions.Like(g.tasks_not_typical_grants.task_name, "%" + SearchDB + "%") || EF.Functions.Like(g.roles.role_name, "%" + SearchDB + "%") || EF.Functions.Like(g.schemas.schm_name, "%" + SearchDB + "%"))).ToListAsync();
+				return PartialView("GetTasks", db_grants);
+			}
 
 
-
-
-
+		}
 
 
 

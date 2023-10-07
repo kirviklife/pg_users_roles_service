@@ -48,20 +48,30 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         }
 
         // GET: not_typical_grants/Create
-        public IActionResult Create()
+        public IActionResult Create(Guid id, Guid db)
         {
-            ViewData["role_id"] = new SelectList(_context.roles, "id_role", "id_role");
-            ViewData["schm_id"] = new SelectList(_context.schemas, "id_schm", "id_schm");
-            ViewData["task_id"] = new SelectList(_context.tasks_not_typical_grants, "id_task", "id_task");
-            return View();
-        }
+			var rl = from roles in _context.roles
+					 join srv_roles_relations in _context.srv_roles_relations on roles.id_role equals srv_roles_relations.role_id
+					 where srv_roles_relations.srv_id == id
+					 select new
+					 {
+						 roles.role_name,
+						 roles.id_role
+					 };
+			ViewData["role_id"] = new SelectList(rl, "id_role", "role_name");
+            ViewData["schm_id"] = new SelectList(_context.schemas.Where(s=>s.db_id == db), "id_schm", "schm_name");
+            ViewData["task_id"] = new SelectList(_context.tasks_not_typical_grants, "id_task", "task_name");
+			ViewBag.iddb = db;
+			not_typical_grants not_Typical_Grants = new not_typical_grants();
+			return PartialView("Create", not_Typical_Grants);
+		}
 
         // POST: not_typical_grants/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id_not_typical_grant,task_id,last_date_time_exec,date_time_create,schm_id,is_repeat,parameters,role_id")] not_typical_grants not_typical_grants)
+        public async Task<IActionResult> Create(not_typical_grants not_typical_grants)
         {
             ModelState.Remove("roles");
             ModelState.Remove("schemas");
@@ -74,13 +84,10 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
                 not_typical_grants.id_not_typical_grant = Guid.NewGuid();
                 _context.Add(not_typical_grants);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Ok();
             }
-            ViewData["role_id"] = new SelectList(_context.roles, "id_role", "id_role", not_typical_grants.role_id);
-            ViewData["schm_id"] = new SelectList(_context.schemas, "id_schm", "id_schm", not_typical_grants.schm_id);
-            ViewData["task_id"] = new SelectList(_context.tasks_not_typical_grants, "id_task", "id_task", not_typical_grants.task_id);
-            return View(not_typical_grants);
-        }
+			return BadRequest("Произошла ошибка при обработке вашего запроса");
+		}
 
         // GET: not_typical_grants/Edit/5
         public async Task<IActionResult> Edit(Guid? id)

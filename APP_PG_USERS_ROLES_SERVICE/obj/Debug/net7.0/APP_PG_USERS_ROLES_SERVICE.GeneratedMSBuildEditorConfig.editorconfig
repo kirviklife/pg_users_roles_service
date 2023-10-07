@@ -32,6 +32,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/databases/GetGrantsDb.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXEdldEdyYW50c0RiLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/databases/GetGrantsSchema.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXEdldEdyYW50c1NjaGVtYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/databases/GetNotTasks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXEdldE5vdFRhc2tzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/databases/GetSchemas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXEdldFNjaGVtYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/databases/GetTasks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXEdldFRhc2tzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/databases/GetUsersRoles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGF0YWJhc2VzXEdldFVzZXJzUm9sZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,10 +64,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grants/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grants/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -58,6 +74,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grants/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grants/RevokeGrant.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGJfZ3JhbnRzXFJldm9rZUdyYW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/db_grant_privs/Create.cshtml]

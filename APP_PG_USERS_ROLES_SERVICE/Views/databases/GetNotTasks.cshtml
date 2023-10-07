@@ -1,0 +1,45 @@
+﻿@model IEnumerable<APP_PG_USERS_ROLES_SERVICE.Models.not_typical_grants>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Задача</th>
+            <th>Роль</th>
+            <th>Схема</th>
+            <th>Параметры</th>
+            <th>Скрипт</th>
+            <th>Время исполнения</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.tasks_not_typical_grants.task_name</td>
+                <td>@item.roles.role_name</td>
+                <td>@item.schemas.schm_name</td>
+                <td>@string.Join(", ", item.parameters)</td>
+                <td>@item.tasks_not_typical_grants.task_script</td>
+                <td>@if (item.last_date_time_exec == null)
+                    {
+                        <span class="badge bg-danger">Нет данных</span>
+                    }
+                    else
+                    {
+                        <p>item.last_date_time_exec</p>
+                    }
+                </td>
+                <td>@if (item.is_repeat)
+                    {
+                        <span class="badge bg-success">Регулярно</span>
+                    }</td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

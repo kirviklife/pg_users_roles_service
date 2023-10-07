@@ -1,0 +1,27 @@
+﻿@model IEnumerable<APP_PG_USERS_ROLES_SERVICE.Models.schemas>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				OID объекта
+			</th>
+			<th>
+				Имя схемы
+			</th>
+		</tr>
+	</thead>
+	<tbody id="UserDataSearching">
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.oid_schm)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.schm_name)
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

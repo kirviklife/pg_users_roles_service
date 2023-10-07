@@ -47,33 +47,60 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         }
 
         // GET: schm_grants/Create
-        public IActionResult Create()
+        public IActionResult Create(Guid id, Guid db)
         {
-            ViewData["role_id"] = new SelectList(_context.roles, "id_role", "id_role");
-            ViewData["schm_id"] = new SelectList(_context.schemas, "id_schm", "id_schm");
-            ViewData["schm_grant_privs_id"] = new SelectList(_context.schm_grant_privs, "id_schm_grant_privs", "id_schm_grant_privs");
-            return View();
-        }
+			var rl = from roles in _context.roles
+					 join srv_roles_relations in _context.srv_roles_relations on roles.id_role equals srv_roles_relations.role_id
+					 where srv_roles_relations.srv_id == id
+					 select new
+					 {
+						 roles.role_name,
+						 roles.id_role
+					 };
+			ViewData["role_id"] = new SelectList(rl, "id_role", "role_name");
+            ViewData["schm_id"] = new SelectList(_context.schemas.Where(s=>s.db_id == db), "id_schm", "schm_name");
+            ViewData["schm_grant_privs_id"] = new SelectList(_context.schm_grant_privs, "id_schm_grant_privs", "schm_grant_priv_name");
+			ViewBag.DBID = db;
+			schm_grants schm_grants = new schm_grants();
+			return PartialView("Create", schm_grants);
+		}
 
         // POST: schm_grants/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id_schm_grants,schm_grant_privs_id,schm_id,date_time_exec,is_success,role_id")] schm_grants schm_grants)
+        public async Task<IActionResult> Create(schm_grants schm_grants)
         {
+            ModelState.Remove("roles");
+            ModelState.Remove("schemas");
+            ModelState.Remove("schm_grant_privs");
             if (ModelState.IsValid)
             {
-                schm_grants.id_schm_grants = Guid.NewGuid();
-                _context.Add(schm_grants);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                int schm_grants_count = _context.schm_grants.Where(s => s.schm_id == schm_grants.schm_id && s.role_id == schm_grants.role_id && s.schm_grant_privs_id == schm_grants.schm_grant_privs_id).Count();
+                if (schm_grants_count == 0)
+                {
+                    schm_grants.id_schm_grants = Guid.NewGuid();
+                    _context.Add(schm_grants);
+                    await _context.SaveChangesAsync();
+                    return Ok("Права добавлены");
+                }
+                else
+                {
+                    var schm_grants2 = _context.schm_grants.Where(s => s.schm_id == schm_grants.schm_id && s.role_id == schm_grants.role_id && s.schm_grant_privs_id == schm_grants.schm_grant_privs_id).FirstOrDefault();
+                    schm_grants2.is_success = false;
+                    schm_grants2.date_time_exec = null;
+                    _context.Update(schm_grants2);
+                    _context.SaveChanges();
+                    return Ok("Будет выполнено повторное назначение прав");
+                }
+                
             }
             ViewData["role_id"] = new SelectList(_context.roles, "id_role", "id_role", schm_grants.role_id);
             ViewData["schm_id"] = new SelectList(_context.schemas, "id_schm", "id_schm", schm_grants.schm_id);
             ViewData["schm_grant_privs_id"] = new SelectList(_context.schm_grant_privs, "id_schm_grant_privs", "id_schm_grant_privs", schm_grants.schm_grant_privs_id);
-            return View(schm_grants);
-        }
+			return BadRequest("Произошла ошибка при обработке вашего запроса");
+		}
 
         // GET: schm_grants/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
