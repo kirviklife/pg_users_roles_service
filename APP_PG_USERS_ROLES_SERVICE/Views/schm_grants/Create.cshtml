@@ -17,6 +17,11 @@
 
             </div>
             <div class="modal-body">
+                <div  style="display: none;text-align:center;" id="imgSpinner1">
+                    <img style="width:100%" src="~/load2.gif" />
+                    <h3 style=" color:#0e70a0" class="modal-title">Подождите, идет синхронизация...</h3>
+                </div>
+                <div id="imgSpinner2">
                 <form asp-action="Create" id="AddSchGrant" method="post" data-ajax="true" data-ajax-method="POST" data-ajax-success="Bindgrid"
                       asp-antiforgery="true">
                     <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
@@ -46,7 +51,7 @@
 
                     </div>
                 </form>
-
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>

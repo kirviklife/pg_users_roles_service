@@ -9517,6 +9517,18 @@
       "PackagePath": "staticwebassets\\load.gif"
     },
     {
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\load2.gif",
+      "PackagePath": "staticwebassets\\load2.gif"
+    },
+    {
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\load3.gif",
+      "PackagePath": "staticwebassets\\load3.gif"
+    },
+    {
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\load4.gif",
+      "PackagePath": "staticwebassets\\load4.gif"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.APP_PG_USERS_ROLES_SERVICE.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

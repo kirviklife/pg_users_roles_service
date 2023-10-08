@@ -220,10 +220,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grants/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudHNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grants/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -234,6 +230,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grants/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grants/RevokeGrant.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2NobV9ncmFudHNcUmV2b2tlR3JhbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/schm_grant_privs/Create.cshtml]
@@ -270,6 +270,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/servers/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2VydmVyc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/servers/GetServers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2VydmVyc1xHZXRTZXJ2ZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/servers/Index.cshtml]

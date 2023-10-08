@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VnNqwn8WCUNTMlvoizHMkliW5YA1HkVMqih1URI77ss=",
+  "Hash": "PmWpNtANdX6m5tF4EYE8qcIw9Dmlsa2o9PWFx/1SYbc=",
   "Source": "APP_PG_USERS_ROLES_SERVICE",
   "BasePath": "_content/APP_PG_USERS_ROLES_SERVICE",
   "Mode": "Default",
@@ -40475,6 +40475,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\load.gif"
+    },
+    {
+      "Identity": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\load2.gif",
+      "SourceId": "APP_PG_USERS_ROLES_SERVICE",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\",
+      "BasePath": "_content/APP_PG_USERS_ROLES_SERVICE",
+      "RelativePath": "load2.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\load2.gif"
+    },
+    {
+      "Identity": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\load3.gif",
+      "SourceId": "APP_PG_USERS_ROLES_SERVICE",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\",
+      "BasePath": "_content/APP_PG_USERS_ROLES_SERVICE",
+      "RelativePath": "load3.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\load3.gif"
+    },
+    {
+      "Identity": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\load4.gif",
+      "SourceId": "APP_PG_USERS_ROLES_SERVICE",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\",
+      "BasePath": "_content/APP_PG_USERS_ROLES_SERVICE",
+      "RelativePath": "load4.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\load4.gif"
     }
   ]
 }

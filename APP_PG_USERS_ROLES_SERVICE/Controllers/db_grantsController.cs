@@ -180,10 +180,6 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            if (_context.db_grants == null)
-            {
-				return BadRequest("Произошла ошибка при обработке вашего запроса");
-			}
             var db_grants = await _context.db_grants.Include(d => d.databases)
                 .Include(d => d.db_grant_privs)
                 .Include(d => d.roles).FirstOrDefaultAsync(m => m.id_db_grants == id);
@@ -192,10 +188,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
                 var revoke = _context.Database.ExecuteSqlRaw($"Select update_revoke_db_typical_grants('{db_grants.id_db_grants}')") ;
                 var listgrants = _context.Database.ExecuteSqlRaw($"select update_list_db_typical_grants()");
                 var grants = _context.Database.ExecuteSqlRaw($"select update_grants_db_typical_grants()");
-                _context.db_grants.Remove(db_grants);
+               
             }
-            
-            await _context.SaveChangesAsync();
             return Ok($"Права на {db_grants.db_grant_privs.db_grant_priv_name} в БД {db_grants.databases.db_name} отняты у роли {db_grants.roles.role_name} ");
         }
 

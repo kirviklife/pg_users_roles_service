@@ -196,13 +196,15 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
             this.users_roles_relation2 = new HashSet<users_roles_relation>();
             this.db_grants = new HashSet<db_grants>();
             this.srv_roles_relations = new HashSet<srv_roles_relations>();
+            this.not_typical_grants = new HashSet<not_typical_grants>();
 
-        }
+		}
         public virtual ICollection<srv_roles_relations> srv_roles_relations { get; set; }
         public virtual ICollection<users_roles_relation> users_roles_relation1 { get; set; }
         public virtual ICollection<users_roles_relation> users_roles_relation2 { get; set; }
         public virtual ICollection<db_grants> db_grants { get; set; }
-    }
+		public virtual ICollection<not_typical_grants> not_typical_grants { get; set; }
+	}
 
     public class schemas
     {

@@ -313,7 +313,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 			{
 				var db_grants = await _context.not_typical_grants.Include(n => n.roles)
 				.Include(n => n.schemas)
-				.Include(n => n.tasks_not_typical_grants).Where(g=>g.schemas.db_id == iddb).ToListAsync();
+				.Include(n => n.tasks_not_typical_grants).Where(n=>n.schemas.db_id == iddb).ToListAsync();
 				return PartialView("GetNotTasks", db_grants);
 			}
 			else

@@ -160,7 +160,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         }
 
         // GET: schm_grants/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
+        public async Task<IActionResult> RevokeGrant(Guid? id)
         {
             if (id == null || _context.schm_grants == null)
             {
@@ -172,32 +172,31 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
                 .Include(s => s.schemas)
                 .Include(s => s.schm_grant_privs)
                 .FirstOrDefaultAsync(m => m.id_schm_grants == id);
-            if (schm_grants == null)
-            {
-                return NotFound();
-            }
-
-            return View(schm_grants);
-        }
+			return PartialView("RevokeGrant", schm_grants);
+		}
 
         // POST: schm_grants/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("RevokeGrant")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             if (_context.schm_grants == null)
             {
-                return Problem("Entity set 'DataContext.schm_grants'  is null.");
-            }
-            var schm_grants = await _context.schm_grants.FindAsync(id);
+				return BadRequest("Произошла ошибка при обработке вашего запроса");
+			}
+            var schm_grants = await _context.schm_grants.Include(s => s.roles)
+                .Include(s => s.schemas)
+                .Include(s => s.schm_grant_privs)
+                .Include(s => s.schemas.databases)
+                .FirstOrDefaultAsync(m => m.id_schm_grants == id);
             if (schm_grants != null)
             {
-                _context.schm_grants.Remove(schm_grants);
+				var revoke = _context.Database.ExecuteSqlRaw($"Select update_revoke_schm_typical_grants('{schm_grants.id_schm_grants}')");
+				var listgrants = _context.Database.ExecuteSqlRaw($"select update_list_schemas_typical_grants()");
             }
             
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+			return Ok($"Права на {schm_grants.schm_grant_privs.schm_grant_priv_name} в БД {schm_grants.schemas.databases.db_name} для схемы {schm_grants.schemas.schm_name} отняты у роли {schm_grants.roles.role_name} ");
+		}
 
         private bool schm_grantsExists(Guid id)
         {

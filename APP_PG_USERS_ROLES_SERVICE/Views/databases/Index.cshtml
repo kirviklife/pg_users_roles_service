@@ -321,15 +321,27 @@
 				data: dataToSend,
 				contentType: 'application/x-www-form-urlencoded',
 				success: function (data) {
-					$("#btnupdrelroleuser").click();
-					$("#btnupdroles").click();
-					$("#btnupdusr").click();
-					PlaceHolderElement.find('.modal').modal('hide');
+					$('#imgSpinner1').show(1000);
+					setTimeout(function () {
+						PlaceHolderElement.find('.modal').modal('hide');
+						$("#btnupdrelroleuser").click();
+						$("#btnupdroles").click();
+						$("#btnupdusr").click();
+					}, 3000);
 				},
 				error: function (xhr) {
-					alertify.set('notifier', 'delay', 2);
-					alertify.error(xhr.responseText);
-					console.log(xhr.responseText);
+					
+					setTimeout(function () {
+						$('#imgSpinner2').show(1000);
+						$('#imgSpinner1').hide(1000);
+						alertify.set('notifier', 'delay', 2);
+						alertify.error(xhr.responseText);
+						console.log(xhr.responseText);
+					}, 1500);
+				},
+				beforeSend: function () {
+					$('#imgSpinner2').hide();
+					$('#imgSpinner1').show(1000);
 				}
 			});
 

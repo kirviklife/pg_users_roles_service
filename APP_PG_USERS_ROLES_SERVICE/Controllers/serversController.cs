@@ -27,6 +27,33 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
                           Problem("Entity set 'DataContext.servers'  is null.");
         }
 
+        [HttpGet]
+        public async Task<ActionResult> GetServers(string SearchRelRole, int selectRel)
+        {
+            if (selectRel == 0)
+            {
+				var order = await _context.view_servers_connect_checks.Where(o => EF.Functions.Like(o.srv_name, "%" + SearchRelRole + "%") || EF.Functions.Like(o.ipadd, "%" + SearchRelRole + "%")).ToListAsync();
+				return PartialView("GetServers", order);
+			}
+            else if (selectRel == 1)
+            {
+				var order = await _context.view_servers_connect_checks.Where(o => o.check == "OK" && (EF.Functions.Like(o.srv_name, "%" + SearchRelRole + "%") || EF.Functions.Like(o.ipadd, "%" + SearchRelRole + "%"))).ToListAsync();
+				return PartialView("GetServers", order);
+			}
+			else if (selectRel == 2)
+            {
+				var order = await _context.view_servers_connect_checks.Where(o => o.check != "OK" && (EF.Functions.Like(o.srv_name, "%" + SearchRelRole + "%") || EF.Functions.Like(o.ipadd, "%" + SearchRelRole + "%"))).ToListAsync();
+				return PartialView("GetServers", order);
+			}
+			else
+            {
+				var order = await _context.view_servers_connect_checks.Where(o => EF.Functions.Like(o.srv_name, "%" + SearchRelRole + "%") || EF.Functions.Like(o.ipadd, "%" + SearchRelRole + "%")).ToListAsync();
+				return PartialView("GetServers", order);
+			}
+
+            
+        }
+
         // GET: servers/Details/5
         public async Task<IActionResult> Details(Guid id)
         {
