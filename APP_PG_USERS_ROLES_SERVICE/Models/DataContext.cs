@@ -26,16 +26,17 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         public DbSet<users_roles_relation> users_roles_relation => Set<users_roles_relation>();
         public DbSet<view_servers_connect_checks> view_servers_connect_checks => Set<view_servers_connect_checks>();
 		public DbSet<v_users_roles_grants> v_users_roles_grants => Set<v_users_roles_grants>();
+		public DbSet<jobs_status> jobs_status => Set<jobs_status>();
 		public DbSet<srv_roles_relations> srv_roles_relations => Set<srv_roles_relations>();
+		public DbSet<grants_status> grants_status => Set<grants_status>();
+		public DbSet<view_log_not_typical_grants> view_log_not_typical_grants => Set<view_log_not_typical_grants>();
+		
 
-        
 
-
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-            modelBuilder.Entity<roles>()
+			modelBuilder.Entity<grants_status>().HasNoKey();
+			modelBuilder.Entity<roles>()
                 .HasMany(e => e.users_roles_relation1)
                 .WithOne(e => e.roles1)
                 .HasForeignKey(e => new { e.from_role });
@@ -68,5 +69,15 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
                         .HasPrincipalKey(e => e.id_srv);
 
         }
+    }
+    public class PostgresContext : DbContext
+    {
+        public PostgresContext(DbContextOptions<PostgresContext> options) : base(options)
+        {
+
+        }
+
+        //public DbSet<databases> databases => Set<databases>();
+       
     }
 }

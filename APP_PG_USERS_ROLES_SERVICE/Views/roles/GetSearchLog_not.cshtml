@@ -1,0 +1,52 @@
+﻿
+@model IEnumerable<APP_PG_USERS_ROLES_SERVICE.Models.view_log_not_typical_grants>
+
+
+@{
+}
+
+
+							@foreach (var item in Model)
+							{
+								
+									<tr>
+										<td>
+											@Html.DisplayFor(modelItem => item.srv_name)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.ipadd) 
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.db_name)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.schm_name)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.date_time_exec)
+										</td>
+										<td>
+										@if (item.is_success)
+										{
+											<span class="badge bg-success">Выполнено</span>
+										}
+										else if (!item.is_success)
+										{
+											<span class="badge bg-danger">Не выполнено</span>
+										}
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.task_name)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.zadanie)
+										</td>
+										<td>
+											@Html.DisplayFor(modelItem => item.txt_error)
+										</td>
+										
+									
+									</tr>
+								
+							}
+						

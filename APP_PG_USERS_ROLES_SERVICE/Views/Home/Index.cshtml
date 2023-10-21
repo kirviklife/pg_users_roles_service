@@ -1,8 +1,293 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model StackedViewModel
+@{
+	var XLabels = Newtonsoft.Json.JsonConvert.SerializeObject(Model.StatServers.Select(x => x.Title).ToList());
+	var YValues = Newtonsoft.Json.JsonConvert.SerializeObject(Model.StatServers.Select(x => x.Quantity).ToList());
+	var XLabels2 = Newtonsoft.Json.JsonConvert.SerializeObject(Model.StatRoles.Select(x => x.Title).ToList());
+	var YValues2 = Newtonsoft.Json.JsonConvert.SerializeObject(Model.StatRoles.Select(x => x.Quantity).ToList());
+	var XLabels3 = Newtonsoft.Json.JsonConvert.SerializeObject(Model.jobs_status.Select(x => x.my_day).Distinct().ToList());
+	var YValues3_1 = Newtonsoft.Json.JsonConvert.SerializeObject(Model.jobs_status.Where(x => x.status == "s").Select(x => x.coalesce).ToList());
+	var YValues3_2 = Newtonsoft.Json.JsonConvert.SerializeObject(Model.jobs_status.Where(x => x.status == "f").Select(x => x.coalesce).ToList());
+	var XLabels4 = Newtonsoft.Json.JsonConvert.SerializeObject(Model.grants_status.Select(x => x.data).Distinct().ToList());
+	var YValues4_1 = Newtonsoft.Json.JsonConvert.SerializeObject(Model.grants_status.Where(x => x.znach == "db").Select(x => x.coalesce).ToList());
+	var YValues4_2 = Newtonsoft.Json.JsonConvert.SerializeObject(Model.grants_status.Where(x => x.znach == "sch").Select(x => x.coalesce).ToList());
 }
 
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Добро пожаловать в систему!</h1>
 </div>
+<h1 class="app-page-title">Общая информация</h1>
+<div class="app-card shadow-sm mb-4 border-left-decoration">
+	<div class="inner">
+		<div class="app-card-body p-4">
+			<div class="row gx-5 gy-3">
+				<div class="col-12 col-lg-9">
+
+					<div>На данной странице отражена статисника по вашим серверам</div>
+				</div><!--//col-->
+			</div><!--//row-->
+
+		</div><!--//app-card-body-->
+
+	</div><!--//inner-->
+</div><!--//app-card-->
+<div class="row g-4 mb-4">
+	<div class="col-12 col-lg-3">
+		<div class="app-card app-card-chart h-100 shadow-sm">
+			<div class="app-card-header p-3 border-0">
+				<h4 class="app-card-title">Количество серверов</h4>
+			</div><!--//app-card-header-->
+			<div class="app-card-body p-4">
+				<div class="chart-container" style="position: relative; width:100%; height:190px; display: inline-block; text-align:center">
+					<canvas id="chart2" style="display:inherit" width="200" height="190"</canvas>
+				</div>
+			</div><!--//app-card-body-->
+		</div><!--//app-card-->
+	</div><!--//col-->
+	<div class="col-12 col-lg-9">
+		<div class="app-card app-card-chart h-100 shadow-sm">
+			<div class="app-card-header p-3 border-0">
+				<h4 class="app-card-title">Количество пользователей и ролей</h4>
+			</div><!--//app-card-header-->
+			<div class="app-card-body p-4">
+				<div class="chart-container">
+					<div class="chart-container">
+						<canvas id="chart" style="width:100%; height:200px"></canvas>
+					</div>
+				</div>
+			</div><!--//app-card-body-->
+		</div><!--//app-card-->
+	</div><!--//col-->
+	<div class="col-12 col-lg-6">
+		<div class="app-card app-card-chart h-100 shadow-sm">
+			<div class="app-card-header p-3 border-0">
+				<h4 class="app-card-title">Работа джобов (За последнюю неделю)</h4>
+			</div><!--//app-card-header-->
+			<div class="app-card-body p-4">
+				<div class="chart-container">
+					<canvas id="line-chart" style="width:100%; height:200px"></canvas>
+				</div>
+			</div><!--//app-card-body-->
+		</div><!--//app-card-->
+	</div><!--//col-->
+	<div class="col-12 col-lg-6">
+		<div class="app-card app-card-chart h-100 shadow-sm">
+			<div class="app-card-header p-3 border-0">
+				<h4 class="app-card-title">Статистика по выдаче прав</h4>
+			</div><!--//app-card-header-->
+			<div class="app-card-body p-4">
+				<div class="chart-container">
+					<canvas id="stolb-chart" style="width:100%; height:200px"></canvas>
+				</div>
+			</div><!--//app-card-body-->
+		</div><!--//app-card-->
+	</div><!--//col-->
+</div><!--//row-->
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+		var ctx1 = document.getElementById('chart').getContext('2d');
+		var myChart1 = new Chart(ctx1, {
+			type: 'bar',
+			data: {
+				labels: @Html.Raw(XLabels2),
+				datasets: [{
+					label: 'Количество: ',
+					data: @Html.Raw(YValues2),
+					backgroundColor: [
+						'rgba(216, 27, 96, 0.6)',
+						'rgba(3, 169, 244, 0.6)',
+						'rgba(255, 152, 0, 0.6)',
+						'rgba(29, 233, 182, 0.6)',
+						'rgba(156, 39, 176, 0.6)',
+						'rgba(84, 110, 122, 0.6)'
+					],
+					borderColor: [
+						'rgba(216, 27, 96, 1)',
+						'rgba(3, 169, 244, 1)',
+						'rgba(255, 152, 0, 1)',
+						'rgba(29, 233, 182, 1)',
+						'rgba(156, 39, 176, 1)',
+						'rgba(84, 110, 122, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				plugins: {
+					legend: {
+						display: false
+					},
+					title: {
+						display: false,
+						position: 'top',
+						fontSize: 16
+					},
+					scales: {
+						yAxes: [{
+							ticks: {
+								min: 0
+							}
+						}]
+					}
+				}
+			}
+		});
+		var ctx2 = document.getElementById('chart2').getContext('2d');
+		var myChart2 = new Chart(ctx2, {
+			type: 'doughnut',
+			data: {
+				labels: @Html.Raw(XLabels),
+				datasets: [{
+					data: @Html.Raw(YValues),
+					backgroundColor: [
+						'rgba(3, 169, 244, 0.6)',
+						'rgba(216, 27, 96, 0.6)',
+						'rgba(255, 152, 0, 0.6)',
+						'rgba(29, 233, 182, 0.6)',
+						'rgba(156, 39, 176, 0.6)',
+						'rgba(84, 110, 122, 0.6)'
+					],
+					borderWidth: 0.5,
+					borderColor: '#ddd'
+				}]
+			},
+			options: {
+				responsive: true,
+				plugins: {
+					legend: {
+						position: 'bottom',
+					},
+					title: {
+						display: false,
+					}
+				}
+			},
+		});
+		new Chart(document.getElementById("line-chart"), {
+			type: 'line',
+			data: {
+				labels: @Html.Raw(XLabels3),
+				datasets: [{
+					data: @Html.Raw(YValues3_1),
+					label: "Успешно",
+					borderColor: "#3e95cd",
+					fill: false
+				}, {
+					data: @Html.Raw(YValues3_2),
+					label: "Не успешно",
+					borderColor: "#8e5ea2",
+					fill: false
+				}
+				]
+			},
+			legend: {
+				display: true,
+				position: 'bottom',
+				labels: {
+					boxWidth: 20,
+					fontColor: '#111',
+					padding: 15
+				}
+			},
+			options: {
+				title: {
+					display: false
+				}
+			}
+		});
+
+		new Chart(document.getElementById("stolb-chart"), {
+			type: 'bar',
+			data: {
+				labels: @Html.Raw(XLabels4),
+				datasets: [{
+					data: @Html.Raw(YValues4_1),
+					label: "Грантов на БД",
+					backgroundColor: [
+						'rgba(216, 27, 96, 0.6)',
+						'rgba(216, 27, 96, 0.6)',
+						'rgba(216, 27, 96, 0.6)',
+						'rgba(216, 27, 96, 0.6)',
+						'rgba(216, 27, 96, 0.6)',
+						'rgba(216, 27, 96, 0.6)',
+						'rgba(216, 27, 96, 0.6)',
+						'rgba(216, 27, 96, 0.6)',
+						'rgba(216, 27, 96, 0.6)',
+						'rgba(216, 27, 96, 0.6)',
+						'rgba(216, 27, 96, 0.6)',
+						'rgba(255, 99, 132, 0.2)'
+					],
+					borderColor: [
+						'rgba(216, 27, 96, 1)',
+						'rgba(216, 27, 96, 1)',
+						'rgba(216, 27, 96, 1)',
+						'rgba(216, 27, 96, 1)',
+						'rgba(216, 27, 96, 1)',
+						'rgba(216, 27, 96, 1)',
+						'rgba(216, 27, 96, 1)',
+						'rgba(216, 27, 96, 1)',
+						'rgba(216, 27, 96, 1)',
+						'rgba(216, 27, 96, 1)',
+						'rgba(216, 27, 96, 1)',
+						'rgba(216, 27, 96, 1)'
+					],
+					fill: false
+				}, {
+					data: @Html.Raw(YValues4_2),
+					label: "Грантов на схемы",
+					backgroundColor: [
+						'rgba(29, 233, 182, 0.6)',
+						'rgba(29, 233, 182, 0.6)',
+						'rgba(29, 233, 182, 0.6)',
+						'rgba(29, 233, 182, 0.6)',
+						'rgba(29, 233, 182, 0.6)',
+						'rgba(29, 233, 182, 0.6)',
+						'rgba(29, 233, 182, 0.6)',
+						'rgba(29, 233, 182, 0.6)',
+						'rgba(29, 233, 182, 0.6)',
+						'rgba(29, 233, 182, 0.6)',
+						'rgba(29, 233, 182, 0.6)',
+						'rgba(29, 233, 182, 0.6)'
+
+
+					],
+					borderColor: [
+						'rgba(29, 233, 182, 1)',
+						'rgba(29, 233, 182, 1)',
+						'rgba(29, 233, 182, 1)',
+						'rgba(29, 233, 182, 1)',
+						'rgba(29, 233, 182, 1)',
+						'rgba(29, 233, 182, 1)',
+						'rgba(29, 233, 182, 1)',
+						'rgba(29, 233, 182, 1)',
+						'rgba(29, 233, 182, 1)',
+						'rgba(29, 233, 182, 1)',
+						'rgba(29, 233, 182, 1)',
+						'rgba(29, 233, 182, 1)',
+					],
+					fill: false
+				}
+				]
+			},
+			legend: {
+				display: true,
+				position: 'bottom',
+				labels: {
+					boxWidth: 20,
+					fontColor: '#111',
+					padding: 15
+				}
+			},
+			options: {
+				indexAxis: 'y',
+				title: {
+					display: false
+				}
+			}
+		});
+
+	});
+</script>  

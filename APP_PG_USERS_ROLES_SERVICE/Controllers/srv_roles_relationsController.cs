@@ -21,9 +21,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         // GET: srv_roles_relations
         public async Task<IActionResult> Index()
         {
-              return _context.srv_roles_relations != null ? 
-                          View(await _context.srv_roles_relations.Include(d => d.roles).Include(d => d.servers).ToListAsync()) :
-                          Problem("Entity set 'DataContext.srv_roles_relations'  is null.");
+            var dataContext = _context.srv_roles_relations.Include(s => s.roles).Include(s => s.servers);
+            return View(await dataContext.ToListAsync());
         }
 
         // GET: srv_roles_relations/Details/5
@@ -35,6 +34,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
             }
 
             var srv_roles_relations = await _context.srv_roles_relations
+                .Include(s => s.roles)
+                .Include(s => s.servers)
                 .FirstOrDefaultAsync(m => m.id_srv_role == id);
             if (srv_roles_relations == null)
             {
@@ -47,6 +48,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         // GET: srv_roles_relations/Create
         public IActionResult Create()
         {
+            ViewData["role_id"] = new SelectList(_context.roles, "id_role", "role_name");
+            ViewData["srv_id"] = new SelectList(_context.servers, "id_srv", "srv_name");
             return View();
         }
 
@@ -64,6 +67,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["role_id"] = new SelectList(_context.roles, "id_role", "role_name", srv_roles_relations.role_id);
+            ViewData["srv_id"] = new SelectList(_context.servers, "id_srv", "srv_name", srv_roles_relations.srv_id);
             return View(srv_roles_relations);
         }
 
@@ -80,6 +85,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
             {
                 return NotFound();
             }
+            ViewData["role_id"] = new SelectList(_context.roles, "id_role", "role_name", srv_roles_relations.role_id);
+            ViewData["srv_id"] = new SelectList(_context.servers, "id_srv", "srv_name", srv_roles_relations.srv_id);
             return View(srv_roles_relations);
         }
 
@@ -115,6 +122,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["role_id"] = new SelectList(_context.roles, "id_role", "role_name", srv_roles_relations.role_id);
+            ViewData["srv_id"] = new SelectList(_context.servers, "id_srv", "srv_name", srv_roles_relations.srv_id);
             return View(srv_roles_relations);
         }
 
@@ -127,6 +136,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
             }
 
             var srv_roles_relations = await _context.srv_roles_relations
+                .Include(s => s.roles)
+                .Include(s => s.servers)
                 .FirstOrDefaultAsync(m => m.id_srv_role == id);
             if (srv_roles_relations == null)
             {

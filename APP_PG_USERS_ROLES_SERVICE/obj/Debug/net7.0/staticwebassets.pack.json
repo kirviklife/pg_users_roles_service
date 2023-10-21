@@ -85,20 +85,16 @@
       "PackagePath": "staticwebassets\\assets\\images\\Logo.png"
     },
     {
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\Logo2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\Logo2.png"
+    },
+    {
       "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\app-logo.svg",
       "PackagePath": "staticwebassets\\assets\\images\\app-logo.svg"
     },
     {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\background\\background-1.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\background\\background-1.jpg"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\background\\background-2.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\background\\background-2.jpg"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\background\\background-3.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\background\\background-3.jpg"
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\background\\background-4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\background\\background-4.png"
     },
     {
       "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\doc-thumb-1.jpg",
@@ -113,72 +109,8 @@
       "PackagePath": "staticwebassets\\assets\\images\\portal-logo.svg"
     },
     {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\profiles\\profile-1.png",
-      "PackagePath": "staticwebassets\\assets\\images\\profiles\\profile-1.png"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\profiles\\profile-2.png",
-      "PackagePath": "staticwebassets\\assets\\images\\profiles\\profile-2.png"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\profiles\\profile-3.png",
-      "PackagePath": "staticwebassets\\assets\\images\\profiles\\profile-3.png"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\profiles\\profile-4.png",
-      "PackagePath": "staticwebassets\\assets\\images\\profiles\\profile-4.png"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\profiles\\profile-5.png",
-      "PackagePath": "staticwebassets\\assets\\images\\profiles\\profile-5.png"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\profiles\\profile-6.png",
-      "PackagePath": "staticwebassets\\assets\\images\\profiles\\profile-6.png"
-    },
-    {
       "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\user.png",
       "PackagePath": "staticwebassets\\assets\\images\\user.png"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\users\\.DS_Store",
-      "PackagePath": "staticwebassets\\assets\\images\\users\\.DS_Store"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\users\\user-1.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\users\\user-1.jpg"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\users\\user-2.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\users\\user-2.jpg"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\users\\user-3.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\users\\user-3.jpg"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\users\\user-4.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\users\\user-4.jpg"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\users\\user-5.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\users\\user-5.jpg"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\users\\user-6.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\users\\user-6.jpg"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\users\\user-7.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\users\\user-7.jpg"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\users\\user-8.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\users\\user-8.jpg"
-    },
-    {
-      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\images\\users\\user-9.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\users\\user-9.jpg"
     },
     {
       "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\assets\\js\\app.js",
@@ -9277,6 +9209,38 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\errors\\404.gif",
+      "PackagePath": "staticwebassets\\errors\\404.gif"
+    },
+    {
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\errors\\404.png",
+      "PackagePath": "staticwebassets\\errors\\404.png"
+    },
+    {
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\errors\\500.gif",
+      "PackagePath": "staticwebassets\\errors\\500.gif"
+    },
+    {
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\errors\\503.gif",
+      "PackagePath": "staticwebassets\\errors\\503.gif"
+    },
+    {
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\errors\\503.png",
+      "PackagePath": "staticwebassets\\errors\\503.png"
+    },
+    {
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\errors\\505.gif",
+      "PackagePath": "staticwebassets\\errors\\505.gif"
+    },
+    {
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\errors\\Apa-itu-HTTP-Error-503-Bagaimana-Cara-Mengatasinya-100.jpg",
+      "PackagePath": "staticwebassets\\errors\\Apa-itu-HTTP-Error-503-Bagaimana-Cara-Mengatasinya-100.jpg"
+    },
+    {
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\errors\\i.webp",
+      "PackagePath": "staticwebassets\\errors\\i.webp"
+    },
+    {
       "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
@@ -9527,6 +9491,14 @@
     {
       "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\load4.gif",
       "PackagePath": "staticwebassets\\load4.gif"
+    },
+    {
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\load5.gif",
+      "PackagePath": "staticwebassets\\load5.gif"
+    },
+    {
+      "Id": "D:\\Рабочий стол\\МЭИ\\ДИПЛОМ\\Программа\\APP_PG_USERS_ROLES_SERVICE\\APP_PG_USERS_ROLES_SERVICE\\wwwroot\\load6.gif",
+      "PackagePath": "staticwebassets\\load6.gif"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.APP_PG_USERS_ROLES_SERVICE.Microsoft.AspNetCore.StaticWebAssets.props",

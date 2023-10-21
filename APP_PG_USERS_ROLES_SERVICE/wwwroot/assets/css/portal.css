@@ -13534,8 +13534,8 @@ button.close:focus {
 
     .app-btn-primary:hover, .app-btn-primary:active {
         color: #fff;
-        background: #18ba70;
-        border-color: #18ba70
+        background: #89a2c8;
+        border-color: #09264d;
     }
 
 .app-btn-secondary {
@@ -14646,7 +14646,7 @@ button.close:focus {
 }
 
 .app-login .auth-background-holder {
-    background: url("../images/background/background-1.jpg") no-repeat center center;
+    background: url("../images/background/background-4.png") no-repeat center center;
     background-size: cover;
     height: 100vh;
     min-height: 100%

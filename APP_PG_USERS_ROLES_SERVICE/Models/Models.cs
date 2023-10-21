@@ -282,6 +282,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         public string ipadd { get; set; }
         [Display(Name = "Имя сервера")]
         [Column(TypeName = "varchar")]
+        [Required(ErrorMessage = "Не указано имя сервера")]
         [StringLength(75, MinimumLength = 1, ErrorMessage = "Длина строки должна быть от 1 до 75 символов")]
         public string srv_name { get; set; }
         [Display(Name = "Порт")]
@@ -423,6 +424,71 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         public string path { get; set; }
 
     }
+
+
+    public class StatServers
+    {
+        public string Title { get; set; }
+        public int Quantity { get; set; }
+    }
+	public class StatRoles
+	{
+		public string Title { get; set; }
+		public int Quantity { get; set; }
+	}
+
+	public class Statjobs
+	{
+		public string Title { get; set; }
+		public int Quantity { get; set; }
+	}
+
+	public class StackedViewModel
+    {
+        public List<StatServers> StatServers { get; set; }
+        public List<StatRoles> StatRoles { get; set; }
+        public List<jobs_status> jobs_status { get; set; }
+        public List<grants_status> grants_status { get; set; }
+	}
+
+	[Table("jobs_status")]
+	[Keyless]
+	public class jobs_status
+	{
+		[Display(Name = "Дата")]
+		public string my_day { get; set; }
+		[Display(Name = "Статус")]
+		public string status { get; set; }
+		[Display(Name = "Количество")]
+		public int coalesce { get; set; }
+
+	}
+
+	[Keyless]
+	[Table("grants_status")]
+	public class grants_status
+	{
+		public DateOnly data { get; set; }
+		public string znach { get; set; }
+		public int coalesce { get; set; }
+
+	}
+
+	[Keyless]
+	[Table("view_log_not_typical_grants")]
+	public class view_log_not_typical_grants
+	{
+		public string srv_name { get; set; }
+		public string ipadd { get; set; }
+		public string db_name { get; set; }
+		public string schm_name { get; set; }
+		public DateTime date_time_exec { get; set; }
+		public bool is_success { get; set; }
+		public string task_name { get; set; }
+		public string zadanie { get; set; }
+		public string? txt_error { get; set; }
+
+	}
 
 }
 

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using APP_PG_USERS_ROLES_SERVICE.Models;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.AspNetCore.Authorization;
 
 namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 {
@@ -18,32 +12,6 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         public rolesController(DataContext context)
         {
             _context = context;
-        }
-
-        // GET: roles
-        public async Task<IActionResult> Index()
-        {
-              return _context.roles != null ? 
-                          View(await _context.roles.ToListAsync()) :
-                          Problem("Entity set 'DataContext.roles'  is null.");
-        }
-
-        // GET: roles/Details/5
-        public async Task<IActionResult> Details(Guid? id)
-        {
-            if (id == null || _context.roles == null)
-            {
-                return NotFound();
-            }
-
-            var roles = await _context.roles
-                .FirstOrDefaultAsync(m => m.id_role == id);
-            if (roles == null)
-            {
-                return NotFound();
-            }
-
-            return View(roles);
         }
 
         public IActionResult CreateRole(Guid srvid)
@@ -342,5 +310,71 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         {
           return (_context.roles?.Any(e => e.id_role == id)).GetValueOrDefault();
         }
-    }
+
+		public async Task<IActionResult> Index()
+		{
+			ViewBag.Current = "roles";
+			var dataContext = _context.roles;
+			return View(await dataContext.ToListAsync());
+		}
+
+		public async Task<IActionResult> IndexLog()
+		{
+			ViewBag.Current = "log_not";
+			var dataContext = _context.view_log_not_typical_grants;
+			return View(await dataContext.ToListAsync());
+		}
+
+		public async Task<ActionResult> GetSearchLog_not (string SearchValue, int SearchValue2)
+		{
+			List<view_log_not_typical_grants> view_log_not_typical_grants = new List<view_log_not_typical_grants>();
+			try
+			{
+				if (string.IsNullOrEmpty(SearchValue))
+				{
+                    switch (SearchValue2)
+                    {
+                        case 0:
+							view_log_not_typical_grants = await _context.view_log_not_typical_grants.ToListAsync();
+							return PartialView("GetSearchLog_not", view_log_not_typical_grants);
+						case 1:
+							view_log_not_typical_grants = await _context.view_log_not_typical_grants.Where(s=>s.is_success).ToListAsync();
+							return PartialView("GetSearchLog_not", view_log_not_typical_grants);
+						case 2:
+							view_log_not_typical_grants = await _context.view_log_not_typical_grants.Where(s => s.is_success == false).ToListAsync();
+							return PartialView("GetSearchLog_not", view_log_not_typical_grants);
+						default:
+							view_log_not_typical_grants = await _context.view_log_not_typical_grants.ToListAsync();
+							return PartialView("GetSearchLog_not", view_log_not_typical_grants);
+					}
+					
+				}
+				else
+				{
+					switch (SearchValue2)
+					{
+						case 0:
+							view_log_not_typical_grants = await _context.view_log_not_typical_grants.Where(d => EF.Functions.Like(d.srv_name, "%" + SearchValue + "%") || EF.Functions.Like(d.ipadd, "%" + SearchValue + "%") || EF.Functions.Like(d.db_name, "%" + SearchValue + "%") || EF.Functions.Like(d.schm_name, "%" + SearchValue + "%") || EF.Functions.Like(d.date_time_exec.ToString(), "%" + SearchValue + "%") || EF.Functions.Like(d.zadanie, "%" + SearchValue + "%") || EF.Functions.Like(d.task_name, "%" + SearchValue + "%")).ToListAsync();
+							return PartialView("GetSearchLog_not", view_log_not_typical_grants);
+						case 1:
+							view_log_not_typical_grants = await _context.view_log_not_typical_grants.Where(d => d.is_success && ( EF.Functions.Like(d.srv_name, "%" + SearchValue + "%") || EF.Functions.Like(d.ipadd, "%" + SearchValue + "%") || EF.Functions.Like(d.db_name, "%" + SearchValue + "%") || EF.Functions.Like(d.schm_name, "%" + SearchValue + "%") || EF.Functions.Like(d.date_time_exec.ToString(), "%" + SearchValue + "%") || EF.Functions.Like(d.zadanie, "%" + SearchValue + "%") || EF.Functions.Like(d.task_name, "%" + SearchValue + "%"))).ToListAsync();
+							return PartialView("GetSearchLog_not", view_log_not_typical_grants);
+						case 2:
+							view_log_not_typical_grants = await _context.view_log_not_typical_grants.Where(d => d.is_success == false && (EF.Functions.Like(d.srv_name, "%" + SearchValue + "%") || EF.Functions.Like(d.ipadd, "%" + SearchValue + "%") || EF.Functions.Like(d.db_name, "%" + SearchValue + "%") || EF.Functions.Like(d.schm_name, "%" + SearchValue + "%") || EF.Functions.Like(d.date_time_exec.ToString(), "%" + SearchValue + "%") || EF.Functions.Like(d.zadanie, "%" + SearchValue + "%") || EF.Functions.Like(d.task_name, "%" + SearchValue + "%"))).ToListAsync(); 
+							return PartialView("GetSearchLog_not", view_log_not_typical_grants);
+						default:
+							view_log_not_typical_grants = await _context.view_log_not_typical_grants.ToListAsync();
+							return PartialView("GetSearchLog_not", view_log_not_typical_grants);
+					}
+					
+				}
+			}
+			catch
+			{
+				view_log_not_typical_grants = await _context.view_log_not_typical_grants.ToListAsync();
+				return PartialView("GetSearchLog_not", view_log_not_typical_grants);
+			}
+		}
+
+	}
 }
