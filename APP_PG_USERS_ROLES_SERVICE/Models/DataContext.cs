@@ -10,7 +10,6 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
         {
 
         }
-
         public DbSet<databases> databases => Set<databases>();
         public DbSet<db_grant_privs> db_grant_privs => Set<db_grant_privs>();
         public DbSet<db_grants> db_grants => Set<db_grants>();

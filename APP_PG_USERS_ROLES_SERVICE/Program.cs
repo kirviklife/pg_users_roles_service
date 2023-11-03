@@ -36,6 +36,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseDefaultFiles();
+
 app.UseDeveloperExceptionPage();
 
 app.UseStatusCodePagesWithRedirects("/error/{0}");

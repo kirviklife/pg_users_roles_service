@@ -21,6 +21,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         // GET: servers
         public async Task<IActionResult> Index()
         {
+            //Подчеркивать пункт меню Сервера
             ViewBag.Current = "Servers";
             return _context.view_servers_connect_checks != null ? 
                           View(await _context.view_servers_connect_checks.ToListAsync()) :
