@@ -1,10 +1,12 @@
 ﻿using APP_PG_USERS_ROLES_SERVICE.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 {
-    public class rolesController : Controller
+	[Authorize]
+	public class rolesController : Controller
     {
         private readonly DataContext _context;
 

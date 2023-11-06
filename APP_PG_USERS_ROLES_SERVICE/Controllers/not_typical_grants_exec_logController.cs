@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using APP_PG_USERS_ROLES_SERVICE.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 {
-    public class not_typical_grants_exec_logController : Controller
+	[Authorize]
+	public class not_typical_grants_exec_logController : Controller
     {
         private readonly DataContext _context;
 

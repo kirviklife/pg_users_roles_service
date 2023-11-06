@@ -1,10 +1,12 @@
 ﻿using APP_PG_USERS_ROLES_SERVICE.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 {
+	[Authorize]
 	public class databasesController : Controller
 	{
 		private readonly DataContext _context;

@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using APP_PG_USERS_ROLES_SERVICE.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 {
-    public class srv_roles_relationsController : Controller
+	[Authorize]
+	public class srv_roles_relationsController : Controller
     {
         private readonly DataContext _context;
 

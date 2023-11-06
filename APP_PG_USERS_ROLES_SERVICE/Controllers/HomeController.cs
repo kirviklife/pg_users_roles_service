@@ -1,7 +1,12 @@
 ﻿using APP_PG_USERS_ROLES_SERVICE.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using System.Diagnostics;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 {
@@ -15,7 +20,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 			_context = context;
 		}
 
-
+		[Authorize]
 		public ActionResult Index()
 		{
 			ViewBag.Current = "Home";
@@ -31,15 +36,18 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 				Title = "Не работает",
 				Quantity = _context.view_servers_connect_checks.Where(s => s.check != "OK").Count()
 			});
-			
-			
-			
+
+
+
 			var StatRo = new List<StatRoles>();
-			int countpolz_ispolz = _context.srv_roles_relations.Include(n => n.roles).Select(s=>new { 
-				s.roles.id_role, s.roles.is_login
+			int countpolz_ispolz = _context.srv_roles_relations.Include(n => n.roles).Select(s => new
+			{
+				s.roles.id_role,
+				s.roles.is_login
 			}
 			).Distinct().Where(s => s.is_login).Count();
-			int countrl_ispolz = _context.srv_roles_relations.Include(n => n.roles).Select(s => new {
+			int countrl_ispolz = _context.srv_roles_relations.Include(n => n.roles).Select(s => new
+			{
 				s.roles.id_role,
 				s.roles.is_login
 			}
@@ -76,17 +84,17 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 				Title = "Не используется ролей",
 				Quantity = countroles - countrl_ispolz
 			});
-			var jobs_status = _context.jobs_status.OrderBy(s=>s.my_day).ToList();
+			var jobs_status = _context.jobs_status.OrderBy(s => s.my_day).ToList();
 			var grants_status = _context.grants_status.ToList();
 
-			var StackedViewModel = new StackedViewModel { 
+			var StackedViewModel = new StackedViewModel
+			{
 				StatRoles = StatRo
-				, StatServers = StatServers,
+				,
+				StatServers = StatServers,
 				jobs_status = jobs_status,
 				grants_status = grants_status
 			};
-
-
 
 			return View(StackedViewModel);
 
@@ -104,7 +112,58 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 		}
 		public IActionResult Autorize()
 		{
-			return View();
+			ClaimsPrincipal claims = HttpContext.User;
+			if (claims.Identity.IsAuthenticated)
+				return RedirectToAction("Index", "Home");
+			auth_model auth_model = new auth_model();
+			return View(auth_model);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Autorize(auth_model auth_model)
+		{
+			var us = await _context.roles.Where(r => r.role_name == auth_model.signin_email && r.is_superuser == true).FirstOrDefaultAsync();
+			if (us != null)
+			{
+				try
+				{
+					//string connectionString = $"Host=192.168.56.102;Integrated Security=false;Username={auth_model.signin_email};Password={auth_model.signin_password};Database=pg_users_roles_service";
+					//NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+					//await connection.OpenAsync();
+					//await connection.CloseAsync();
+					_context.Database.SetConnectionString($"Host=192.168.56.102;Integrated Security=false;Username={auth_model.signin_email};Password={auth_model.signin_password};Database=pg_users_roles_service");
+					await _context.Database.OpenConnectionAsync();
+					await _context.Database.CloseConnectionAsync();
+					List<Claim> claims = new List<Claim>()
+					{
+						new Claim(ClaimTypes.NameIdentifier, auth_model.signin_email),
+						new Claim(ClaimsIdentity.DefaultRoleClaimType, "superuser"),
+						new Claim("OtherProperties","Exaple Role")
+					};
+					ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+					AuthenticationProperties properties = new AuthenticationProperties()
+					{
+						AllowRefresh = true,
+						IsPersistent = true
+					};
+					HttpContext.Session.SetString("log", auth_model.signin_email);
+					await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
+					return RedirectToAction("Index", "Home");
+				}
+				catch 
+				{
+					ViewBag.osh = "Подключиться к БД не удалось";
+				}
+
+			}
+			return View(auth_model);
+		}
+
+		public async Task<IActionResult> LogOut()
+		{
+			await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+			return RedirectToAction("Autorize", "Home");
 		}
 
 	}

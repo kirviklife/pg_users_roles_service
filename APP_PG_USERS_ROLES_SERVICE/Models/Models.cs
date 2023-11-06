@@ -425,8 +425,16 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
 
     }
 
+	public class auth_model
+	{
+		[Display(Name = "Логин")]
+		public string signin_email { get; set; }
+		[Display(Name = "Пароль")]
+		public string signin_password { get; set; }
+	}
 
-    public class StatServers
+
+	public class StatServers
     {
         public string Title { get; set; }
         public int Quantity { get; set; }

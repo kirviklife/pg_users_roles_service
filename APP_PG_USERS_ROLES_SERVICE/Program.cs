@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.EntityFrameworkCore;
 using DBContext = APP_PG_USERS_ROLES_SERVICE.Models.DataContext;
@@ -19,6 +20,21 @@ builder.Services.AddDbContext<PostgresContext>(options =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAuthentication(
+	CookieAuthenticationDefaults.AuthenticationScheme)
+	.AddCookie(option =>
+	{
+		option.LoginPath = "/Home/Autorize";
+		option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+	}
+	);
+
+builder.Services.AddSession();
+builder.Services.AddSession(options =>
+{
+	options.IdleTimeout = TimeSpan.FromMinutes(10);
+});
+
 var app = builder.Build();
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
@@ -30,9 +46,13 @@ if (!app.Environment.IsDevelopment())
 }
 
 //app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseAuthorization();
 
@@ -46,6 +66,6 @@ app.Map("/error/{statusCode}", (int statusCode) => $"Error. Status Code: {status
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Autorize}/{id?}");
 
 app.Run();

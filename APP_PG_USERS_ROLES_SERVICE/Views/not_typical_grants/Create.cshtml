@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <label asp-for="date_time_create" class="control-label"></label>
-                            <input asp-for="date_time_create" class="form-control" />
+                                <input asp-for="date_time_create" ReadOnly="true" class="form-control" />
                             <span asp-validation-for="date_time_create" class="text-danger"></span>
                         </div>
                          <div class="col-12 col-md-6">
@@ -54,7 +54,12 @@
                         </div>
                     </div>
                     <hr class="my-4">
-                   
+                        <div class="row g-4 settings-section">
+                            <div class="col-12 col-md-12">
+                                <label class="form-label">СКРИПТ ДЛЯ ВЫПОЛНЕНИЯ:</label>
+                                <textarea name="scrpt" readonly="true" id="scrpt" style="height: 148px;" class="form-control" rows="10"></textarea>
+                            </div>
+                        </div>
                 </form>
                 </div>
             </div>
@@ -70,6 +75,33 @@
         font-size: 13px;
     }
 </style>
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var SearchValue = $("#task_id").val();
+        $.ajax({
+            type: 'POST',
+            url: '/not_typical_grants/get_script_task?id_task=' + SearchValue,
+            contentType: 'application/x-www-form-urlencoded',
+            success: function (data) {
+                $("#scrpt").val(data);
+            }
+        });
+        $("#task_id").on('change', function (e) {
+            var SearchValue = $("#task_id").val();
+            $.ajax({
+                type: 'POST',
+                url: '/not_typical_grants/get_script_task?id_task=' + SearchValue,
+                contentType: 'application/x-www-form-urlencoded',
+                success: function (data) {
+                    $("#scrpt").val(data);
+                }
+            });
+        });
+    });
+
+</script>

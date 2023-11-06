@@ -1,5 +1,5 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model APP_PG_USERS_ROLES_SERVICE.Models.auth_model
+@{
     Layout = null;
 }
 
@@ -27,19 +27,28 @@
 <body class="app app-login p-0">
 	<div class="row g-0 app-auth-wrapper">
 		<div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5" >
+			
+				@if (ViewBag.osh != null)
+				{
+				<div class="alert alert-danger" role="alert">
+					@ViewBag.osh
+				</div>
+				}
+			
 			<div class="d-flex flex-column align-content-end">
 				<div class="app-auth-body mx-auto">
 					<div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img style="height:100px" src="~/assets/images/Logo2.png" alt="logo"></a></div>
 					<h2 class="auth-heading text-center mb-5">ВХОД В СИСТЕМУ</h2>
 					<div class="auth-form-container text-start">
-						<form class="auth-form login-form">
+						<form asp-action="Autorize" id="FormAutorize" method="post" data-ajax="true" data-ajax-method="POST" data-ajax-success="Bindgrid"
+							  asp-antiforgery="true">
 							<div class="email mb-3">
-								<label for="signin-email">Логин</label>
-								<input id="signin-email" name="signin-email" class="form-control signin-email" placeholder="Введите логин..." required="required">
+								<label asp-for="signin_email">Логин</label>
+								<input id="signin_email" name="signin_email" class="form-control signin-email" placeholder="Введите логин..." required="required">
 							</div><!--//form-group-->
 							<div class="password mb-3">
-								<label for="signin-password">Пароль</label>
-								<input id="signin-password" name="signin-password" type="password" class="form-control signin-password" placeholder="Введите пароль..." required="required">
+								<label asp-for="signin_password">Пароль</label>
+								<input id="signin_password" name="signin_password" type="password" class="form-control signin-password" placeholder="Введите пароль..." required="required">
 								<div class="extra mt-3 row justify-content-between">
 									<div class="col-6">
 										<div class="form-check">
@@ -53,7 +62,7 @@
 								</div><!--//extra-->
 							</div><!--//form-group-->
 							<div class="text-center">
-								<button type="submit" class="btn app-btn-secondary w-100 theme-btn mx-auto">Войти</button>
+								<button type="submit" id="vhod" class="btn app-btn-secondary w-100 theme-btn mx-auto">Войти</button>
 							</div>
 						</form>
 					</div><!--//auth-form-container-->
@@ -68,7 +77,7 @@
 			<div class="auth-background-overlay p-3 p-lg-5">
 				<div class="d-flex flex-column align-content-end h-100">
 					<div class="h-100"></div>
-					<div class="overlay-content p-3 p-lg-4 rounded">
+					<div class="overlay-content p-3 p-lg-4 rounded" style="color: #e5e5e5;">
 						<h5 class="mb-3 overlay-title">Система управления ролями и пользователями в СУБД PostgreSQL</h5>
 						<div>Система управления ролями и пользователями в PostgreSQL предназначена для упрощения работы с пользователями и группами в базе данных. Она предоставляет графический интерфейс для создания, редактирования и удаления пользователей, а также для управления правами доступа. Система также позволяет просматривать информацию о текущих сессиях и генерировать отчеты о доступе к ресурсам базы данных.</div>
 					</div>
@@ -77,8 +86,6 @@
 		</div><!--//auth-background-col-->
 
 	</div><!--//row-->
-
-
 </body>
 </html>
 

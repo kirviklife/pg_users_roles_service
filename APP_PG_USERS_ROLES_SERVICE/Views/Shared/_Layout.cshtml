@@ -57,7 +57,7 @@
 								<ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 									<li><a class="dropdown-item" href="settings.html">Настройки</a></li>
 									<li><hr class="dropdown-divider"></li>
-									<li><a class="dropdown-item" href="login.html">Выйти</a></li>
+									<li><a class="dropdown-item" asp-action="LogOut" asp-controller="home">Выйти</a></li>
 								</ul>
 							</div><!--//app-user-dropdown-->
 						</div><!--//app-utilities-->
@@ -159,7 +159,7 @@
 							</li><!--//nav-item-->
 							<li class="nav-item">
 								<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-								<a class="nav-link" href="settings.html">
+								<a class="nav-link" asp-action="LogOut" asp-controller="home">
 									<span class="nav-icon">
 										<svg width="1em" height="1em" class="bi bi-box-arrow-left" viewBox="0 0 16 16"
 											fill="currentColor" xmlns="http://www.w3.org/2000/svg">
