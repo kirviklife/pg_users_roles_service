@@ -498,5 +498,29 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
 
 	}
 
+	[Keyless]
+	[Table("roles_users_servers")]
+	public class roles_users_servers
+	{
+		[Display(Name = "Код роли/пользователя")]
+		public Guid id_role { get; set; }
+		[Display(Name = "Имя роли/логина")]
+		public string? role_name { get; set; }
+		[Display(Name = "ФИО")]
+		public string? fio { get; set; }
+		[Display(Name = "Адрес эл. почты")]
+		public string? email { get; set; }
+		[Display(Name = "Номер телефона")]
+		public string? phone { get; set; }
+		[Display(Name = "Список серверов")]
+		public string? servers_list { get; set; }
+	}
+
+	public class rolesdata
+	{
+		public IEnumerable<roles> roles { get; set; }
+		public IEnumerable<roles_users_servers> roles_users_servers { get; set; }
+	}
+
 }
 

@@ -115,7 +115,6 @@
                             <label style="color: red;">Внимание! При проставлении данного параметра, необходимо указать только логин пользователя (прочие параметры будут игнорироваться)</label>
                         </div>
                     </div>
-                    
                 </form>
                 </div>
             </div>
@@ -128,3 +127,11 @@
 </div>
 
 
+    <script>
+    const element = document.getElementById('phone');
+    const maskOptions = {
+        mask: '+{7}(000)000-00-00',
+        lazy: false,
+    };
+    const mask = IMask(element, maskOptions);
+    </script>

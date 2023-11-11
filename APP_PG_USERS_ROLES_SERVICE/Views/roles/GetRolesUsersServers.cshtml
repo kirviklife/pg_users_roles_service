@@ -1,0 +1,56 @@
+﻿@model IEnumerable<APP_PG_USERS_ROLES_SERVICE.Models.roles_users_servers>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				Имя роли
+			</th>
+			<th>
+				ФИО
+			</th>
+			<th>
+				Почта
+			</th>
+			<th>
+				Номер телефона
+			</th>
+			<th>
+				Сервера
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.role_name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.fio)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.email)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.phone)
+				</td>
+				<td>
+					@Html.Raw(item.servers_list)
+				</td>
+				<td>
+					<button type="button" data-toggle="ajax-modal" style="color: #143b74;padding: 0px;" data-target="#EditUser" class="BtnModalView btn btn-link" data-url="@Url.Action("EditModalUser","Roles", new { id=item.id_role})">
+						<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V2Zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H6ZM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1H2Z" />
+						</svg>
+						Клонировать
+					</button>
+				</td>
+			</tr>
+
+		}
+	</tbody>
+</table>

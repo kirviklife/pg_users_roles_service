@@ -5,8 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace APP_PG_USERS_ROLES_SERVICE.Controllers
 {
-	[Authorize]
-	public class rolesController : Controller
+    [Authorize]
+    public class rolesController : Controller
     {
         private readonly DataContext _context;
 
@@ -101,14 +101,6 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
                 {
                     return BadRequest("Необходимо указать имя");
                 }
-                if (roles.email == null)
-                {
-                    return BadRequest("Необходимо указать эл. адрес почты");
-                }
-                if (roles.phone == null)
-                {
-                    return BadRequest("Необходимо указать номер моб. телефона");
-                }
                 if (roles.role_pass == null)
                 {
                     return BadRequest("Необходимо указать пароль");
@@ -117,6 +109,10 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
             if (ModelState.IsValid)
             {
                 var rl1 = _context.roles.Where(r => r.role_name == roles.role_name).Count();
+                if (rl1 == 0 && isrole)
+                {
+					return BadRequest("Такой роли не существует");
+				}
                 if (rl1 == 0)
                 {
                     roles.id_role = Guid.NewGuid();
@@ -186,14 +182,6 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
             if (roles.im == null)
             {
                 return BadRequest("Необходимо указать имя");
-            }
-            if (roles.email == null)
-            {
-                return BadRequest("Необходимо указать эл. адрес почты");
-            }
-            if (roles.phone == null)
-            {
-                return BadRequest("Необходимо указать номер моб. телефона");
             }
             if (roles.role_pass == null)
             {
@@ -304,8 +292,8 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
                 return BadRequest("Произошла ошибка");
             }
             var upd = _context.Database.ExecuteSqlRaw($"select fnc_del_role('{srvi}','{id}','one');");
-            return Ok();
-        }
+			return Ok("Пользователь/Роль удален(а)");
+		}
 
         private bool rolesExists(Guid id)
         {
@@ -315,8 +303,13 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.Current = "roles";
-            var dataContext = _context.roles;
-            return View(await dataContext.ToListAsync());
+            rolesdata rolesdata = new rolesdata
+            {
+                roles_users_servers = await _context.roles_users_servers.ToListAsync(),
+                roles = await _context.roles.ToListAsync()
+			};
+                              
+            return View(rolesdata);
         }
 
         public async Task<IActionResult> IndexLog()
@@ -383,11 +376,292 @@ namespace APP_PG_USERS_ROLES_SERVICE.Controllers
         }
         public JsonResult GetEvents()
         {
-            
-                var events = _context.roles.ToList();
-                return new JsonResult( events );
-            
+
+            var events = _context.roles.ToList();
+            return new JsonResult(events);
+
         }
 
-    }
+        [HttpGet]
+        public async Task<ActionResult> GetRoles(string Search)
+        {
+            if (Search == null || Search == "")
+            {
+                var rol = await _context.roles.Where(r => r.is_login == false && r.fam == null).ToListAsync();
+                return PartialView("GetRoles", rol);
+            }
+            else
+            {
+
+                var rol = await _context.roles.Where(r => r.is_login == false && r.fam == null && EF.Functions.Like(r.role_name, "%" + Search + "%")).ToListAsync();
+                return PartialView("GetRoles", rol);
+            }
+
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetUsers(string Search)
+        {
+            if (Search == null || Search == "")
+            {
+                var rol = await _context.roles.Where(r => r.is_login || r.fam != null).ToListAsync();
+                return PartialView("GetUsers", rol);
+            }
+            else
+            {
+                var rol = await _context.roles.Where(r => (r.is_login || r.fam != null) && (EF.Functions.Like(r.role_name, "%" + Search + "%") || EF.Functions.Like(r.fam, "%" + Search + "%") || EF.Functions.Like(r.im, "%" + Search + "%") || EF.Functions.Like(r.otch, "%" + Search + "%") || EF.Functions.Like(r.phone, "%" + Search + "%") || EF.Functions.Like(r.email, "%" + Search + "%"))).ToListAsync();
+                return PartialView("GetUsers", rol);
+            }
+
+        }
+
+		[HttpGet]
+		public async Task<ActionResult> GetRolesUsersServers(string Search)
+		{
+			if (Search == null || Search == "")
+			{
+				var rol = await _context.roles_users_servers.ToListAsync();
+				return PartialView("GetRolesUsersServers", rol);
+			}
+			else
+			{
+
+				var rol = await _context.roles_users_servers.Where(r => EF.Functions.Like(r.role_name, "%" + Search + "%") || EF.Functions.Like(r.fio, "%" + Search + "%") || EF.Functions.Like(r.phone, "%" + Search + "%") || EF.Functions.Like(r.email, "%" + Search + "%") || EF.Functions.Like(r.servers_list, "%" + Search + "%")).ToListAsync();
+				return PartialView("GetRolesUsersServers", rol);
+			}
+
+		}
+
+		public IActionResult CreateNewRole()
+        {
+            roles roles = new roles();
+            return PartialView("CreateNewRole", roles);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateNewRole(roles roles)
+        {
+            if (roles.role_name == null)
+            {
+                return BadRequest("Необходимо указать имя роли");
+            }
+            if (ModelState.IsValid)
+            {
+                var rl1 = _context.roles.Where(r => r.role_name == roles.role_name).Count();
+                if (rl1 == 0)
+                {
+                    roles.id_role = Guid.NewGuid();
+                    _context.Add(roles);
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    return BadRequest("Такая роль уже существует");
+                }
+                return Ok("Роль добавлена");
+            }
+            return BadRequest("Произошла ошибка при обработке вашего запроса");
+        }
+
+        public IActionResult CreateNewUser()
+        {
+            roles roles = new roles();
+            return PartialView("CreateNewUser", roles);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateNewUser(roles roles)
+        {
+            if (roles.role_name == null)
+            {
+                return BadRequest("Необходимо придумать логин");
+            }
+            var est = _context.roles.Where(r => r.role_name == roles.role_name).Count();
+
+            if (est > 0)
+            {
+                return BadRequest("Пользователь с таким логином существует");
+            }
+            if (roles.fam == null)
+            {
+                return BadRequest("Необходимо указать фамилию");
+            }
+            if (roles.im == null)
+            {
+                return BadRequest("Необходимо указать имя");
+            }
+            if (roles.role_pass == null)
+            {
+                return BadRequest("Необходимо указать пароль");
+            }
+            if (ModelState.IsValid)
+            {
+                roles.id_role = Guid.NewGuid();
+                _context.Add(roles);
+                _context.SaveChanges();
+                var q2 = _context.Database.ExecuteSqlRaw($"select * from update_list_roles();");
+                return Ok("Пользователь добавлен");
+            }
+            return BadRequest("Произошла ошибка при обработке вашего запроса");
+        }
+		public async Task<IActionResult> EditModalUser(Guid id)
+		{
+			if (id == null || _context.roles == null)
+			{
+				return NotFound();
+			}
+
+			var roles = await _context.roles.FindAsync(id);
+			if (roles == null)
+			{
+				return NotFound();
+			}
+			return PartialView("EditModalUser", roles);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult EditModalUser(Guid id, roles roles)
+		{
+			if (id != roles.id_role)
+			{
+				return NotFound();
+			}
+			if (roles.role_name == null)
+			{
+				return BadRequest("Необходимо указать имя роли");
+			}
+			if (roles.fam == null)
+			{
+				return BadRequest("Необходимо указать фамилию");
+			}
+			if (roles.im == null)
+			{
+				return BadRequest("Необходимо указать имя");
+			}
+			if (roles.role_pass == null)
+			{
+				return BadRequest("Необходимо указать пароль");
+			}
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					_context.Update(roles);
+					_context.SaveChanges();
+				}
+				catch (DbUpdateConcurrencyException)
+				{
+					if (!rolesExists(roles.id_role))
+					{
+						return NotFound();
+					}
+					else
+					{
+						throw;
+					}
+				}
+                var srv_Roles_ = _context.srv_roles_relations.Where(s=>s.role_id == id).ToList();
+                foreach (srv_roles_relations s in srv_Roles_)
+                {
+					_context.Database.ExecuteSqlRaw($"select fnc_upd_role('{s.srv_id}','{id}');");
+				}    
+				return Ok("Данные пользователя обновлены");
+			}
+			return BadRequest("Произошла ошибка");
+		}
+
+		public async Task<IActionResult> EditModalRole(Guid id)
+		{
+			if (id == null || _context.roles == null)
+			{
+				return NotFound();
+			}
+
+			var roles = await _context.roles.FindAsync(id);
+			if (roles == null)
+			{
+				return NotFound();
+			}
+			return PartialView("EditModalRole", roles);
+		}
+
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult EditModalRole(Guid id, roles roles)
+		{
+			if (id != roles.id_role)
+			{
+				return NotFound();
+			}
+			if (roles.role_name == null)
+			{
+				return BadRequest("Необходимо указать имя роли");
+			}
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					_context.Update(roles);
+					_context.SaveChanges();
+				}
+				catch (DbUpdateConcurrencyException)
+				{
+					if (!rolesExists(roles.id_role))
+					{
+						return NotFound();
+					}
+					else
+					{
+						throw;
+					}
+				}
+				var srv_Roles_ = _context.srv_roles_relations.Where(s => s.role_id == id).ToList();
+				foreach (srv_roles_relations s in srv_Roles_)
+				{
+					_context.Database.ExecuteSqlRaw($"select fnc_upd_role('{s.srv_id}','{id}');");
+				}
+				return Ok("Данные роли обновлены");
+			}
+			return BadRequest("Произошла ошибка");
+		}
+		public ActionResult DeleteAll(Guid? id)
+		{
+			if (id == null || _context.roles == null)
+			{
+				return NotFound();
+			}
+			var roles = _context.roles
+				.FirstOrDefault(m => m.id_role == id);
+			if (roles == null)
+			{
+				return NotFound();
+			}
+
+			return PartialView("DeleteAll", roles);
+		}
+
+
+		[HttpPost, ActionName("DeleteAll")]
+		[ValidateAntiForgeryToken]
+		public ActionResult DeleteConfirmedAll(Guid id)
+		{
+			if (_context.roles == null)
+			{
+				return BadRequest("Произошла ошибка");
+			}
+			var upd = _context.Database.ExecuteSqlRaw($"select fnc_del_role('00000000-0000-0000-0000-000000000000','{id}','all');");
+            var roles = _context.roles.Find(id);
+            if (roles != null)
+            {
+                _context.roles.Remove(roles);
+            }
+
+            _context.SaveChanges();
+            return Ok("Пользователь/Роль удален(а)");
+		}
+	}
 }

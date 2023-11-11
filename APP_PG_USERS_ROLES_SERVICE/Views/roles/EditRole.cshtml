@@ -22,6 +22,7 @@
                       asp-antiforgery="true">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="id_role" />
+                    
                     <input name="srvi" type="hidden" value="@ViewBag.sr.ToString()" />
                     <div class="mb-3">
                         <label asp-for="role_name" class="control-label"></label>

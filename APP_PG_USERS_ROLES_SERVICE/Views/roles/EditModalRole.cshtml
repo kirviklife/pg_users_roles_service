@@ -1,0 +1,89 @@
+﻿@model APP_PG_USERS_ROLES_SERVICE.Models.roles
+
+
+
+<div class="modal fade" id="AddUser">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Добавить роль</h4>
+                <button type="button" class="close btn app-btn-secondary" data-dismiss="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                    </svg>
+                </button>
+                
+            </div>
+            <div class="modal-body">
+                <div style="display: none;text-align:center;" id="imgSpinner1">
+                    <img style="width:100%" src="~/load2.gif" />
+                    <h3 style=" color:#0e70a0" class="modal-title">Подождите, идет синхронизация...</h3>
+                </div>
+                <div id="imgSpinner2">
+                    <form asp-action="EditModalRole" id="FormAddRole" method="post" data-ajax="true" data-ajax-method="POST" data-ajax-success="Bindgrid"
+                      asp-antiforgery="true">
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                        <input type="hidden" asp-for="id_role" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row g-4 settings-section">
+                        <div class="col-12 col-md-6">
+                            <label asp-for="role_name" class="form-label"></label>
+                            <input asp-for="role_name" class="form-control" />
+                            <span asp-validation-for="role_name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row g-4 settings-section">
+                    <div class="col-12 col-md-6">
+                                <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="is_superuser" /> @Html.DisplayNameFor(model => model.is_superuser)
+                        </label>
+                    </div>
+                            </div>
+                    <div class="col-12 col-md-6">
+                                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="is_createdb" /> @Html.DisplayNameFor(model => model.is_createdb)
+                        </label>
+                    </div>
+                                </div>
+                    <div class="col-12 col-md-6">
+                                        <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="is_createrole" /> @Html.DisplayNameFor(model => model.is_createrole)
+                        </label>
+                                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                                            <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="is_inherit" checked /> @Html.DisplayNameFor(model => model.is_inherit)
+                        </label>
+                                            </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                                                <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="is_replication" /> @Html.DisplayNameFor(model => model.is_replication)
+                        </label>
+                                                </div>
+                    </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary" data-save="modal">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

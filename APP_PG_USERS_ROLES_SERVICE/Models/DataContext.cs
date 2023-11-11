@@ -29,6 +29,7 @@ namespace APP_PG_USERS_ROLES_SERVICE.Models
 		public DbSet<srv_roles_relations> srv_roles_relations => Set<srv_roles_relations>();
 		public DbSet<grants_status> grants_status => Set<grants_status>();
 		public DbSet<view_log_not_typical_grants> view_log_not_typical_grants => Set<view_log_not_typical_grants>();
+		public DbSet<roles_users_servers> roles_users_servers => Set<roles_users_servers>();
 		
 
 

@@ -100,6 +100,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncbm90X3R5cGljYWxfZ3JhbnRzX2V4ZWNfbG9nXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/CreateNewRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcQ3JlYXRlTmV3Um9sZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/CreateNewUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcQ3JlYXRlTmV3VXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/CreateRole.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcQ3JlYXRlUm9sZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -112,6 +120,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/DeleteAll.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcRGVsZXRlQWxsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/EditModalRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcRWRpdE1vZGFsUm9sZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/EditModalUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcRWRpdE1vZGFsVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/EditRole.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcRWRpdFJvbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -120,8 +140,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcRWRpdFVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/GetRoles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcR2V0Um9sZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/GetRolesUsersServers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcR2V0Um9sZXNVc2Vyc1NlcnZlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/GetSearchLog_not.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcR2V0U2VhcmNoTG9nX25vdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/GetUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3Nccm9sZXNcR2V0VXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Рабочий стол/МЭИ/ДИПЛОМ/Программа/APP_PG_USERS_ROLES_SERVICE/APP_PG_USERS_ROLES_SERVICE/Views/roles/Index.cshtml]
